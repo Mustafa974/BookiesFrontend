@@ -1,0 +1,6 @@
+@import "../mine/mine.wxss";
+
+.infoContainer {
+  background-color: #efefef;
+  min-height: 1220rpx;
+}

@@ -1,0 +1,60 @@
+<!--pages/main/main.wxml-->
+
+<!-- Book Template -->
+<!-- 正在开放 -->
+<template name="mainCard">
+  <view class="mainCardOutline" id="mainCard" data-bid="{{i.id}}" data-index="{{i.id%10%10-1}}" catchtap='toPage'>
+    <van-col span="7">
+      <image src="{{i.imgSrc}}" class="mainCardImg"></image>
+    </van-col>
+    <van-col span="17">
+      <van-row custom-class="mainCardH1">
+        <text>{{ i.title }}</text>
+      </van-row>
+      <van-row custom-class="mainCardSubH1">
+        <text text-align="right">{{ i.author }}</text>
+      </van-row>
+      <van-row custom-class="mainCardH2">
+        <text>{{ i.price }}</text>
+      </van-row>
+    </van-col>
+  </view>
+</template>
+
+<!-- Shuffling Section -->
+ <swiper class='Shuffling' indicator-dots="{{shufflings.indicatorDots}}" autoplay="{{shufflings.autoplay}}" interval="{{shufflings.interval}}" duration="{{shufflings.duration}}" circular="true">
+  <block wx:for="{{shufflings.imgs}}">  
+    <swiper-item>  
+      <navigator url="{{item.link}}" hover-class="navigator-hover">  
+        <image src="{{item.url}}" class="slide-image" mode='widthFix'/>  
+      </navigator>  
+    </swiper-item>  
+  </block>  
+</swiper>
+
+<!-- TopSection of bookes -->
+<view class="TopSection">
+  <van-row>
+    <van-col custom-class="TopSection_Seclect">
+      <van-row>
+        <text bindtap='onClick'>{{selectOrder}} </text>
+      </van-row>
+    </van-col>
+  </van-row>
+</view>
+
+<!-- Select Section -->
+<van-popup show="{{ show }}" bind:close="onCancel" position="bottom" duration="220">
+  <van-picker show-toolbar title="请选择筛选方式" columns="{{ columns }}" item-height="50" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
+<!-- Card Section -->
+<view class='ShadowBottom'></view>
+
+<view class='bg'>
+  <view class='mainCardContainer'style="width:100%;flex-direction:row-reverse;zoom:1;overflow:hidden;">
+    <block wx:for="{{ booksInfo }}" wx:for-item="i" wx:key="">
+      <template is="{{ 'mainCard' }}" data="{{ i }}" />
+    </block>
+  </view>
+</view>

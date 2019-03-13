@@ -1,0 +1,153 @@
+<!--pages/activities/activity.wxml-->
+
+<!-- Temlpate 未开始-->
+<template name="activityCard0">
+  <view class="activityCardOutline" style='border-right: 15rpx solid #5FC48D;' data-groupid="{{i.groupID}}" bindtap='toPage'>
+    <van-col span="21">
+      <van-row>
+        <van-col span="5">
+          <image class="activityCardImg" src="{{i.avatar}}" mode='aspectFit'></image>
+        </van-col>
+        <van-col custom-class="activityCardH1" span="16">
+          <view>
+            <text class='inLine'>{{i.title}} </text>
+            <van-toast id="van-toast" />
+            <van-icon wx:if="{{i.collected == true}}" name="star" custom-class='collected' color="#FFD700" />
+          </view>
+          <view class='activityCardSubH1'>{{ i.date }}
+            <text style="color:#5FC48D;font-weight: 600; font-size:28rpx;">未开始</text>
+          </view>
+        </van-col>
+      </van-row>
+      <van-row custom-class="activityCardSubH1">
+        <text>{{i.campus}}{{i.venue}} | {{i.sport}}</text>
+      </van-row>
+    </van-col>
+    <van-col span="3">
+      <van-row custom-class="activityCardH2">
+        <text>{{i.startTime}}</text>
+      </van-row>
+      <van-row>
+        <view class="activitySubCardH21">
+          <text>{{i.numOfMember}}</text>
+          <text class="activitySubCardH22">/{{i.numOfPeople}}</text>
+        </view>
+      </van-row>
+    </van-col>
+  </view>
+</template>
+
+<!-- Temlpate 进行中-->
+<template name="activityCard1">
+  <view class="activityCardOutline" style='border-right: 15rpx solid #4A90E2;' data-groupid="{{i.groupID}}" bindtap='toPage'>
+    <van-col span="21">
+      <van-row>
+        <van-col span="5">
+          <image class="activityCardImg" src="{{i.avatar}}" mode='aspectFit'></image>
+        </van-col>
+        <van-col custom-class="activityCardH1" span="16">
+          <view>
+            <text class='inLine'>{{i.title}} </text>
+            <van-toast id="van-toast" />
+            <van-icon wx:if="{{i.collected == true}}" name="star" custom-class='collected' color="#FFD700" />
+          </view>
+          <view class='activityCardSubH1'>{{ i.date }}
+            <text style="color:#4A90E2;font-weight: 600; font-size:28rpx;">进行中</text>
+          </view>
+        </van-col>
+      </van-row>
+      <van-row custom-class="activityCardSubH1">
+        <text>{{i.campus}}{{i.venue}} | {{i.sport}}</text>
+      </van-row>
+    </van-col>
+    <van-col span="3">
+      <van-row custom-class="activityCardH2">
+        <text>{{i.startTime}}</text>
+      </van-row>
+      <van-row>
+        <view class="activitySubCardH21">
+          <text>{{i.numOfMember}}</text>
+          <text class="activitySubCardH22">/{{i.numOfPeople}}</text>
+        </view>
+      </van-row>
+    </van-col>
+  </view>
+</template>
+
+<!-- Temlpate 已完成-->
+<template name="activityCard2">
+  <view class="activityCardOutline" style='border-right: 15rpx solid #BFC2C6;' data-groupid="{{i.groupID}}" bindtap='toPage'>
+    <van-col span="21">
+      <van-row>
+        <van-col span="5">
+          <image class="activityCardImg" src="{{i.avatar}}" mode='aspectFit'></image>
+        </van-col>
+        <van-col custom-class="activityCardH1" span="16">
+          <view>
+            <text class='inLine'>{{i.title}} </text>
+            <van-toast id="van-toast" />
+            <van-icon wx:if="{{i.collected == true}}" name="star" custom-class='collected' color="#FFD700" />
+          </view>
+          <view class='activityCardSubH1'>{{ i.date }}
+            <text style="color:#696969;font-weight: 600; font-size:28rpx;">已完成</text>
+          </view>
+        </van-col>
+      </van-row>
+      <van-row custom-class="activityCardSubH1">
+        <text>{{i.campus}}{{i.venue}} | {{i.sport}}</text>
+      </van-row>
+    </van-col>
+    <van-col span="3">
+      <van-row custom-class="activityCardH2">
+        <text>{{i.startTime}}</text>
+      </van-row>
+      <van-row>
+        <view class="activitySubCardH21">
+          <text>{{i.numOfMember}}</text>
+          <text class="activitySubCardH22">/{{i.numOfPeople}}</text>
+        </view>
+      </van-row>
+    </van-col>
+  </view>
+</template>
+
+
+<!-- TopSection of activity -->
+
+<view class="TopSection">
+  <van-row>
+    <van-col span="12">
+      <van-row custom-class="TopSection_Seclect">
+        <text bindtap='onClick01'>{{selectOrder}} </text>
+      </van-row>
+    </van-col>
+    <van-col span="12">
+      <van-row custom-class="TopSection_Seclect">
+        <text bindtap='onClick02'>{{selectChoise}} </text>
+      </van-row>
+    </van-col>
+  </van-row>
+</view>
+
+<!-- select01 -->
+<van-popup show="{{ show01 }}" bind:close="onCancel0102" position="bottom" duration="220">
+  <van-picker show-toolbar title="选择排序方式" columns="{{ columns01 }}" item-height="50" bind:cancel="onCancel0102" bind:confirm="onConfirm01" />
+</van-popup>
+
+<!-- select02 -->
+<van-popup show="{{ show02 }}" bind:close="onCancel0102" position="bottom" duration="220">
+  <van-picker show-toolbar title="做这项运动" columns="{{ columns02 }}" item-height="50" bind:cancel="onCancel0102" bind:confirm="onConfirm02" bind:change="onChange" />
+</van-popup>
+
+
+<!-- CardSection of activity -->
+<view class='activityCardShadowBottom'></view>
+
+<view class='activityCardSection'>
+  <view class='activityCardContainer'>
+    <block wx:for="{{ cardInfo }}" wx:for-item="i" wx:key="">
+      <template is="activityCard0" data="{{i}}" />
+    </block>
+  </view>
+  <wux-fab-button position="bottomRight" theme="dark" backdrop="true" direction="vertical" buttons="{{ buttons }}" bind:click="onClick" />
+</view>

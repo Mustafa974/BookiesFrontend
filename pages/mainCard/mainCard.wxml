@@ -1,0 +1,73 @@
+<!--pages/mainCard.wxml-->
+
+<!-- Top Info -->
+<view class='BookContainer'>
+  <view class='BookOutlineTop'>
+    <!-- Top Section -->
+    <view class='BookTop'>
+      <van-col span="12">
+        <image class='BookImg' src="{{imgSrc}}"></image>
+      </van-col>
+      <van-col span="12">
+        <van-row custom-class="BookTitle">
+          <text>{{title}}</text>
+        </van-row>
+        <van-row custom-class="BookAuthor">
+          <text text-align="right">{{author}}</text>
+        </van-row>
+        <van-row custom-class="BookPrice">
+          <text>{{price}}</text>
+        </van-row>
+      </van-col>
+    </view>
+  </view>
+  <view class='BookOutlineBottom'>
+    <!-- Detail Section -->
+    <view class='BookDetail'>
+      <van-col span="17">
+        <van-row custom-class="td">
+          <text class='th'>书名：</text>
+          <text class='tr'>{{title}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>作者：</text>
+          <text class='tr'>{{author}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>ISBN：</text>
+          <text class='tr'>{{isbn}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>出版社：</text>
+          <text class='tr'>{{publisher}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>价格：</text>
+          <text class='tr'>{{price}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>折扣：</text>
+          <text class='tr'>{{discount}}</text>
+        </van-row>
+        <view class='discription'>
+          <van-row custom-class="td2">
+            <text class='th'>简介：</text>
+            <text class='tr'>{{discription}}</text>
+          </van-row>
+        </view>
+      </van-col>
+    </view>
+  </view>
+</view>
+
+<!-- Bottom Button -->
+<block>
+  <!-- 加入购物车 -->
+  <van-col span="12">
+    <button class='cartButton' bindtap='joinChat'>加入购物车</button>
+  </van-col>
+  <!-- 编辑组团 -->
+  <van-col span="12" style="display: flex;justify-content: flex-end">
+    <button class="buyButton" bindtap='exitConfirm'>立即购买</button>
+  </van-col>
+</block>

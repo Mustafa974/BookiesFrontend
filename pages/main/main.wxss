@@ -1,0 +1,107 @@
+/* pages/main/main.wxss */
+
+/* ShufflingSection starts */
+
+.Shuffling {
+  height: 430rpx;
+  /* position: fixed; */
+}
+
+.slide-image {
+  width: 100%;
+}
+
+/* ShufflingSection ends */
+
+/* TopSection starts*/
+
+.TopSection {
+  width: 750rpx;
+  background-image: linear-gradient(to Top, #92B6D5,#92B6D5, #92B6D5);
+  box-shadow: 0 0 24rpx #bdbdbd;
+  padding: 10rpx;
+  /* position: fixed; */
+  top: 420rpx;
+  z-index: 88;
+}
+
+.TopSection_Seclect {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  padding: 10rpx;
+  z-index: 88;
+  margin-left: 300rpx;
+}
+
+/* TopSection Ends */
+
+/* BookCardSection stars */
+
+.ShadowBottom {
+  box-shadow: 0 0 60rpx #bdbdbd;
+  width: 750rpx;
+  height: 1rpx;
+  position: fixed;
+  bottom: -1rpx;
+}
+
+.mainCardContainer {
+  background-color: #fff;
+  padding: 0 20rpx 40rpx 0;
+  min-height: 600rpx;
+}
+
+.mainCardOutline {
+  display: flex;
+  /* align-items: center; */
+  width:46%;
+  height:170rpx;
+  border-radius: 10rpx;
+  background-color: rgb(248, 253, 255);
+  border: 0.3rpx solid rgb(220, 238, 243);
+  float: left;
+  margin-left:17rpx;
+  margin-right: 2rpx;
+  margin-top:20rpx;
+  position: relative;
+}
+
+.mainCardImg {
+  width: 120rpx;
+  height: 150rpx;
+  margin-left: 20rpx;
+  margin-top: 10rpx; 
+}
+
+.mainCardH1 {
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 1;
+  padding: 35rpx 0 10rpx 10rpx;
+  color: rgb(42, 81, 116);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mainCardSubH1 {
+  font-size: 21rpx;
+  font-weight: 300;
+  line-height: 1;
+  color: #929090;
+  padding: 5rpx 0 10rpx 13rpx;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mainCardH2 {
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 1;
+  padding: 18rpx 0 0 65rpx;
+  color: #92B6D5;
+}
+
+/* BookSection ends */

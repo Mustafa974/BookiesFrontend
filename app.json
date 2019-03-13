@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/mainCard/mainCard",
+    "pages/mine/mine",
+    "pages/editInfo/editInfo",
+    "pages/activity/activity"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#92B6D5",
+    "navigationBarTitleText": "Bookies",
+    "navigationBarTextStyle": "white",
+    "backgroundColorTop": "#efefef",
+    "backgroundColorBottom": "#efefef",
+    "enablePullDownRefresh": true
+  },
+  "usingComponents": {
+    "van-button": "dist/button/index",
+    "van-row": "dist/row/index",
+    "van-col": "dist/col/index",
+    "van-icon": "dist/icon/index",
+    "van-popup": "dist/popup/index",
+    "van-picker": "dist/picker/index",
+    "van-cell": "dist/cell/index",
+    "van-cell-group": "dist/cell-group/index",
+    "van-field": "dist/field/index",
+    "van-datetime-picker": "dist/datetime-picker/index",
+    "van-tabs": "dist/tabs/index",
+    "van-tab": "dist/tab/index",
+    "van-panel": "dist/panel/index",
+    "van-swipe-cell": "dist/swipe-cell/index",
+    "van-toast": "dist/toast/index",
+    "van-action-sheet": "dist/action-sheet/index",
+    "van-tag": "dist/tag/index",
+    "wux-divider": "wux/divider/index",
+    "wux-cell-group": "wux/cell-group/index",
+    "wux-cell": "wux/cell/index",
+    "wux-icon": "wux/icon/index",
+    "wux-input": "wux/input/index",
+    "wux-fab-button": "wux/fab-button/index",
+    "wux-button": "wux/button/index",
+    "wux-dialog": "wux/dialog/index",
+    "wux-card": "wux/card/index",
+    "wux-wing-blank": "wux/wing-blank/index"
+  },
+  "tabBar": {
+    "color": "#BFC2C6",
+    "selectedColor": "#92B6D5",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "selectedIconPath": "assets/icons/home.png",
+        "iconPath": "assets/icons/home_light.png",
+        "pagePath": "pages/main/main",
+        "text": "书城"
+      },
+      {
+        "selectedIconPath": "assets/icons/cart.png",
+        "iconPath": "assets/icons/cart_light.png",
+        "pagePath": "pages/activity/activity",
+        "text": "购物车"
+      },
+      {
+        "selectedIconPath": "assets/icons/history.png",
+        "iconPath": "assets/icons/history_light.png",
+        "pagePath": "pages/activity/activity",
+        "text": "历史订单"
+      },
+      {
+        "selectedIconPath": "assets/icons/me.png",
+        "iconPath": "assets/icons/me_light.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

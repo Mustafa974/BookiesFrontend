@@ -1,0 +1,69 @@
+/* pages/mine/mine.wxss */
+
+@import "../login/login.wxss";
+
+/* MineTopSection */
+
+.mineTop {
+  width: 750rpx;
+  background-image: linear-gradient(to Top, #92B6D5, #92B6D5, #92B6D5);
+  box-shadow: 0 0 30rpx #bdbdbd;
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+.mineLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.mineAvatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx 20rpx 30rpx 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 6rpx #352d3d;
+}
+
+.mineNick {
+  margin-top: 24rpx;
+  color: #fff;
+  font-weight: 600;
+  font-size: 42rpx;
+}
+
+.mineEdit {
+  font-size: 32rpx;
+  color: #fff;
+  margin: 40prx 100rpx;
+  background-color: #000;
+}
+
+.ShadowBottom {
+  box-shadow: 0 0 60rpx #bdbdbd;
+  width: 750rpx;
+  height: 1rpx;
+  position: fixed;
+  bottom: -1rpx;
+}
+
+/* MineList */
+
+.listContainer {
+  padding-top: 250rpx;
+  background-color: #efefef;
+  min-height: 900rpx;
+}
+
+.listMid {
+  padding-top: 62rpx;
+  background-color: #efefef;
+}
+
+.mineList {
+  font-weight: 450;
+}

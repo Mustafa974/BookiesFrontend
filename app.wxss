@@ -1,0 +1,29 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  background-color: #efefef;
+  width: 750rpx;
+}
+
+/* .bg {
+  min-height: 100%;
+  background-color: #efefef;
+} */
+
+.center{
+  text-align: center;
+}
+
+.zIndex88{
+  z-index: 88;
+}
+
+.zIndex1{
+  z-index: 1;
+}
