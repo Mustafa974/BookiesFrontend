@@ -29,7 +29,7 @@ Page({
 
   onClickCart: function() {
     wx.switchTab({
-      url: '../Cart/Cart',
+      url: '../cart/cart',
     })
   },
 

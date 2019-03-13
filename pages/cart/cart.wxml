@@ -1,0 +1,62 @@
+<!--pages/activities/activity.wxml-->
+
+<!-- Temlpate 未开始-->
+<template name="activityCard0">
+  <view class="activityCardOutline" style='border-right: 15rpx solid #5FC48D;' data-groupid="{{i.groupID}}" bindtap='toPage'>
+    <van-col span="21">
+      <van-row>
+        <van-col span="5">
+          <image class="activityCardImg" src="{{i.avatar}}" mode='aspectFit'></image>
+        </van-col>
+        <van-col custom-class="activityCardH1" span="16">
+          <view>
+            <text class='inLine'>{{i.title}} </text>
+            <van-toast id="van-toast" />
+            <van-icon wx:if="{{i.collected == true}}" name="star" custom-class='collected' color="#FFD700" />
+          </view>
+          <view class='activityCardSubH1'>{{ i.date }}
+            <text style="color:#5FC48D;font-weight: 600; font-size:28rpx;">未开始</text>
+          </view>
+        </van-col>
+      </van-row>
+      <van-row custom-class="activityCardSubH1">
+        <text>{{i.campus}}{{i.venue}} | {{i.sport}}</text>
+      </van-row>
+    </van-col>
+    <van-col span="3">
+      <van-row custom-class="activityCardH2">
+        <text>{{i.startTime}}</text>
+      </van-row>
+      <van-row>
+        <view class="activitySubCardH21">
+          <text>{{i.numOfMember}}</text>
+          <text class="activitySubCardH22">/{{i.numOfPeople}}</text>
+        </view>
+      </van-row>
+    </van-col>
+  </view>
+</template>
+
+
+<!-- TopSection of cart -->
+<view class="TopSection">
+  <van-row>
+    <van-col span="12">
+      <van-row custom-class="TopSection_Seclect">
+        <text bindtap='onClick01'>{{selectOrder}} </text>
+      </van-row>
+    </van-col>
+  </van-row>
+</view>
+
+<!-- CardSection of cart -->
+<view class='activityCardShadowBottom'></view>
+
+<view class='activityCardSection'>
+  <view class='activityCardContainer'>
+    <block wx:for="{{ cardInfo }}" wx:for-item="i" wx:key="">
+      <template is="activityCard0" data="{{i}}" />
+    </block>
+  </view>
+  <wux-fab-button position="bottomRight" theme="dark" backdrop="true" direction="vertical" buttons="{{ buttons }}" bind:click="onClick" />
+</view>

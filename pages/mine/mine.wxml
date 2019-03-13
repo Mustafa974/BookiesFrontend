@@ -18,13 +18,19 @@
 <view class='listContainer'>
   <!-- Info -->
   <wux-cell-group>
-    <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" />
-    <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" />
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/name.png'></image>
+      <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" />
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/phone.png' style='height:47rpx'></image>
+      <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" />
+    </view>
   </wux-cell-group>
   <!-- Functions -->
   <wux-cell-group>
     <view class='listMid'>
-      <van-cell title="查看购物车" size="large" title-class="mineList" isLink bind:click='onClickCart' />
+      <van-cell title="查看购物车" size="large" title-class="mineList" isLink bind:click='onClickCart'/>
       <van-cell title="查看历史订单" size="large" title-class="mineList" isLink bind:click='onClickHistory'/>
       <van-cell title="修改个人信息" size="large" title-class="mineList" isLink bind:click='changeUserInfo' />
     </view>

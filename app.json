@@ -6,7 +6,7 @@
     "pages/mainCard/mainCard",
     "pages/mine/mine",
     "pages/editInfo/editInfo",
-    "pages/activity/activity"
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -61,13 +61,13 @@
       {
         "selectedIconPath": "assets/icons/cart.png",
         "iconPath": "assets/icons/cart_light.png",
-        "pagePath": "pages/activity/activity",
+        "pagePath": "pages/cart/cart",
         "text": "购物车"
       },
       {
         "selectedIconPath": "assets/icons/history.png",
         "iconPath": "assets/icons/history_light.png",
-        "pagePath": "pages/activity/activity",
+        "pagePath": "pages/cart/cart",
         "text": "历史订单"
       },
       {

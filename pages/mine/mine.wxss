@@ -59,6 +59,18 @@
   min-height: 900rpx;
 }
 
+.listVerti {
+  display: flex;
+  /* width: 750rpx; */
+}
+
+.mineImg {
+  width: 50rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+  margin-top: 27rpx; 
+}
+
 .listMid {
   padding-top: 62rpx;
   background-color: #efefef;
@@ -66,4 +78,5 @@
 
 .mineList {
   font-weight: 450;
+  width: 600rpx;
 }
