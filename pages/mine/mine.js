@@ -12,12 +12,16 @@ Page({
   onShow: function() {
     var that = this
     // 获取用户信息
-    if (app.globalData.loginStatus) {
-      that.setData({
-        userInfo: app.globalData.userInfo
-      })
-      console.log("用户信息：", that.data.userInfo, app.globalData.avatarUrl)
-    }
+    that.setData({
+      userInfo: app.globalData.userInfo
+    })
+    console.log("用户信息：", that.data.userInfo, app.globalData.avatarUrl)
+    // if (app.globalData.loginStatus) {
+    //   that.setData({
+    //     userInfo: app.globalData.userInfo
+    //   })
+    //   console.log("用户信息：", that.data.userInfo, app.globalData.avatarUrl)
+    // }
   },
 
   // page functions

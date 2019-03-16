@@ -26,6 +26,14 @@
       <image class='mineImg' src='/assets/icons/phone.png' style='height:47rpx'></image>
       <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" />
     </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/birthday.png' style='height:45rpx'></image>
+      <van-cell title="生日" size="large" title-class="mineList" value="{{ userInfo.birthday }}" />
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/location.png' style='height:44rpx'></image>
+      <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' />
+    </view>
   </wux-cell-group>
   <!-- Functions -->
   <wux-cell-group>

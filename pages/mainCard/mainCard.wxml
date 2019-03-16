@@ -1,4 +1,15 @@
 <!--pages/mainCard.wxml-->
+<import src="../../template/quantity/quantity.wxml" />
+<wxs module="filters">
+  var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+  module.exports = {
+    toFix: filters.toFix
+  }
+</wxs>
 
 <!-- Top Info -->
 <view class='BookContainer'>
@@ -6,17 +17,24 @@
     <!-- Top Section -->
     <view class='BookTop'>
       <van-col span="12">
-        <image class='BookImg' src="{{imgSrc}}"></image>
+        <image class='BookImg' src="{{bookInfo.imgSrc}}"></image>
       </van-col>
       <van-col span="12">
         <van-row custom-class="BookTitle">
-          <text>{{title}}</text>
+          <text>{{bookInfo.title}}</text>
         </van-row>
         <van-row custom-class="BookAuthor">
-          <text text-align="right">{{author}}</text>
+          <text text-align="right">{{bookInfo.author}}</text>
         </van-row>
-        <van-row custom-class="BookPrice">
-          <text>{{price}}</text>
+        <van-row custom-class="BookSP">
+          <text class='BookSubH1'>月销量:</text>
+          <text class='BookSubH2' style='font-size:45rpx'>{{bookInfo.sales}}</text>
+          <text class='BookSubH1'>件</text>
+        </van-row>
+        <van-row custom-class="BookSP">
+          <text class='BookSubH1'>现价:</text>
+          <text class='BookSubH2'>￥</text>
+          <text class='BookSubH2'>{{filters.toFix(bookInfo.price*bookInfo.discount)}}</text>
         </van-row>
       </van-col>
     </view>
@@ -27,32 +45,39 @@
       <van-col span="17">
         <van-row custom-class="td">
           <text class='th'>书名：</text>
-          <text class='tr'>{{title}}</text>
+          <text class='tr'>{{bookInfo.title}}</text>
         </van-row>
         <van-row custom-class="td">
           <text class='th'>作者：</text>
-          <text class='tr'>{{author}}</text>
+          <text class='tr'>{{bookInfo.author}}</text>
         </van-row>
         <van-row custom-class="td">
           <text class='th'>ISBN：</text>
-          <text class='tr'>{{isbn}}</text>
+          <text class='tr'>{{bookInfo.isbn}}</text>
         </van-row>
         <van-row custom-class="td">
           <text class='th'>出版社：</text>
-          <text class='tr'>{{publisher}}</text>
+          <text class='tr'>{{bookInfo.publisher}}</text>
         </van-row>
         <van-row custom-class="td">
-          <text class='th'>价格：</text>
-          <text class='tr'>{{price}}</text>
+          <text class='th'>类型：</text>
+          <text class='tr'>{{bookInfo.catagory}}</text>
+        </van-row>
+        <van-row custom-class="td">
+          <text class='th'>原价：</text>
+          <text class='tr' style='text-decoration:line-through'>￥{{filters.toFix(bookInfo.price)}}</text>
         </van-row>
         <van-row custom-class="td">
           <text class='th'>折扣：</text>
-          <text class='tr'>{{discount}}</text>
+          <view class='dis'>
+            <text class='tr2'>{{bookInfo.discount*10}}</text>
+            <text class='tr2'>折</text>
+          </view>
         </van-row>
         <view class='discription'>
           <van-row custom-class="td2">
             <text class='th'>简介：</text>
-            <text class='tr'>{{discription}}</text>
+            <text class='tr'>{{bookInfo.discription}}</text>
           </van-row>
         </view>
       </van-col>
@@ -64,10 +89,44 @@
 <block>
   <!-- 加入购物车 -->
   <van-col span="12">
-    <button class='cartButton' bindtap='joinChat'>加入购物车</button>
+    <button class='bottomButton' bindtap='toggleDialog'>加入购物车</button>
   </van-col>
   <!-- 编辑组团 -->
   <van-col span="12" style="display: flex;justify-content: flex-end">
-    <button class="buyButton" bindtap='exitConfirm'>立即购买</button>
+    <button class="bottomButton" bindtap='exitConfirm'>立即购买</button>
   </van-col>
 </block>
+
+<!-- Add to cart Section -->
+<van-popup show="{{ showDialog }}" bind:close="toggleDialog" position="bottom" duration="220">
+  <view class="dialog__container">
+    <view class="row">
+      <image class="image-sku" src="{{bookInfo.imgSrc}}"></image>
+      <view class="column">
+        <icon bindtap="toggleDialog" class="image-close" type="cancel" size="25" color='#92B6D5'/>
+        <view class='row'>
+          <text class="sku-title">商品总价：</text>
+          <text class="sku-price">￥{{filters.toFix(totalMoney)}}</text>
+        </view>
+        <view class='row'>
+          <text class="sku-title">剩余库存：</text>
+          <text class='sku-value'>{{bookInfo.stock}}</text>
+          <text class="sku-title">件</text>
+        </view>
+        <view class='row'>
+          <text class="sku-title">isbn：</text>
+          <text class='sku-value'>{{bookInfo.isbn}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="border-line"></view>
+    <view class="row">
+      <text class='sku-title' style='margin-left:200rpx'>购买数量：</text>
+      <view class="quantity-position" style='margin-left:40rpx'>
+        <template is="quantity" data="{{ ...bookInfo}}" />  
+      </view>
+    </view>
+    <view class="border-line"></view>
+    <button data-bookid="{{bookInfo.id}}" data-count="{{bookInfo.count}}" class="loginButton" style='margin-top:30rpx' bindtap="addToCart" formType="submit">确定</button>
+  </view>
+</van-popup>

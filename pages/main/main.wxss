@@ -69,7 +69,7 @@
 }
 
 .mainCardImg {
-  width: 120rpx;
+  width: 130rpx;
   height: 150rpx;
   margin-left: 20rpx;
   margin-top: 10rpx; 
@@ -79,7 +79,7 @@
   font-size: 28rpx;
   font-weight: 600;
   line-height: 1;
-  padding: 35rpx 0 10rpx 10rpx;
+  padding: 23rpx 0 7rpx 10rpx;
   color: rgb(42, 81, 116);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -90,18 +90,27 @@
   font-weight: 300;
   line-height: 1;
   color: #929090;
-  padding: 5rpx 0 10rpx 13rpx;
+  padding: 5rpx 0 3rpx 10rpx;
   overflow: hidden; 
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.mainCardSubH2 {
+  font-size: 23rpx;
+  font-weight: 500;
+  line-height: 1;
+  color: #92B6D5;
+  padding: 0 4rpx 0 4rpx;
 }
 
 .mainCardH2 {
   font-size: 32rpx;
   font-weight: 500;
   line-height: 1;
-  padding: 18rpx 0 0 65rpx;
+  padding: 15rpx 0 0 69rpx;
   color: #92B6D5;
+  display: flex;
 }
 
 /* BookSection ends */

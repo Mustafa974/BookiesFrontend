@@ -1,7 +1,5 @@
 // pages/login/login.js
 
-import Toast from '../../dist/toast/toast';
-
 const app = getApp()
 
 Page({
@@ -134,9 +132,10 @@ Page({
           app.globalData.userInfo.phone = that.data.input.phone
           app.globalData.userInfo.role = that.data.input.role
           console.log("注册完成：", app.globalData.userInfo)
-          Toast({
-            duration: 1300,
-            message: '注册成功！',
+          wx.showToast({
+            title: '注册成功！',
+            icon: 'success',
+            duration: 1300
           });
           // 进入页面
           setTimeout(function () {
@@ -147,9 +146,9 @@ Page({
         }
       })
     } else {
-      Toast({
-        duration: 1300,
-        message: '请完善信息哦',
+      wx.showToast({
+        title: '请完善信息哦',
+        duration: 1300
       });
       console.log("信息不完善")
     }

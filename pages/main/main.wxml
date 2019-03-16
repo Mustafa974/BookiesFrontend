@@ -1,9 +1,19 @@
 <!--pages/main/main.wxml-->
+<wxs module="filters">
+  var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+  module.exports = {
+    toFix: filters.toFix
+  }
+</wxs>
 
 <!-- Book Template -->
 <!-- 正在开放 -->
 <template name="mainCard">
-  <view class="mainCardOutline" id="mainCard" data-bid="{{i.id}}" data-index="{{i.id%10%10-1}}" catchtap='toPage'>
+  <view class="mainCardOutline" id="mainCard" data-bookid="{{i.id}}" catchtap='toBookPage'>
     <van-col span="7">
       <image src="{{i.imgSrc}}" class="mainCardImg"></image>
     </van-col>
@@ -14,8 +24,14 @@
       <van-row custom-class="mainCardSubH1">
         <text text-align="right">{{ i.author }}</text>
       </van-row>
+      <van-row custom-class="mainCardSubH1">
+        <text text-align="right">月销量:</text>
+        <text text-align="right" class='mainCardSubH2'>{{ i.sales }}</text>
+        <text text-align="right">件</text>
+      </van-row>
       <van-row custom-class="mainCardH2">
-        <text>{{ i.price }}</text>
+        <text>￥</text>
+        <text>{{ filters.toFix(i.price*i.discount) }}</text>
       </van-row>
     </van-col>
   </view>

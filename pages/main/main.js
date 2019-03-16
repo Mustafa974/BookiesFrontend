@@ -16,16 +16,16 @@ Page({
       imgs: [
         {
           link: '/pages/mine/mine',
-          url: '/assets/images/shuffling/books1.jpeg'
+          url: '/assets/images/shuffling/books1.jpg'
         }, {
           link: '/pages/mine/mine',
-          url: '/assets/images/shuffling/books2.jpeg'
+          url: '/assets/images/shuffling/books2.jpg'
         }, {
           link: '/pages/mine/mine',
-          url: '/assets/images/shuffling/books3.jpeg'
+          url: '/assets/images/shuffling/books3.jpg'
         }, {
           link: '/pages/mine/mine',
-          url: '/assets/images/shuffling/books4.jpeg'
+          url: '/assets/images/shuffling/books4.jpg'
         }
       ]
     },
@@ -37,65 +37,16 @@ Page({
     columns: ['价格最低', '销量最高', '智能推荐'],
 
     // books info
-    booksInfo:[{
-        id: 111,
-        title: '追风筝的人',
-        imgSrc: '/assets/images/img/img_kite.png',
-        price: '￥20.48',
-        author: '卡勒德·胡塞尼'
-    }, {
-        id: 222,
-        title: '活着',
-        imgSrc: '/assets/images/img/img_live.png',
-        price: '￥23.00',
-        author: '余华'
-      }, {
-        id: 333,
-        title: '罗生门',
-        imgSrc: '/assets/images/img/img_lsm.png',
-        price: '￥30.50',
-        author: '芥川龙之介'
-      }, {
-        id: 444,
-        title: '月亮与六便士',
-        imgSrc: '/assets/images/img/img_moon.png',
-        price: '￥18.99',
-        author: '毛姆'
-      }, {
-        id: 555,
-        title: '皮囊',
-        imgSrc: '/assets/images/img/img_pn.png',
-        price: '￥22.49',
-        author: '蔡崇达'
-      }, {
-        id: 666,
-        title: '人间失格',
-        imgSrc: '/assets/images/img/img_rjsg.png',
-        price: '￥15.66',
-        author: '太宰治'
-      }, {
-        id: 777,
-        title: '小王子',
-        imgSrc: '/assets/images/img/img_prince.png',
-        price: '￥19.77',
-        author: '安托万·德·圣埃克苏佩里'
-      }, {
-        id: 888,
-        title: '挪威的森林',
-        imgSrc: '/assets/images/img/img_norway.png',
-        price: '￥28.90',
-        author: '村上春树'
-      },
-    ]
+    booksInfo:[]
 
   },
 
   //  pages functions
   onLoad: function(options) {
     var that = this;
-    // get initial cards
-    // that.loadData();
-
+    that.setData({
+      booksInfo: app.globalData.booksInfo
+    })
   },
 
   // load books info
@@ -176,12 +127,11 @@ Page({
   },
 
   // toPages
-  toPage(event) {
-    var bookid = event.currentTarget.dataset.bid
-    var index = event.currentTarget.dataset.index
-    console.log(bookid+' and '+index)
+  toBookPage(event) {
+    var bookid = event.currentTarget.dataset.bookid
+    console.log(bookid)
     wx.navigateTo({
-      url: '../mainCard/mainCard?bookid='+bookid+'&index='+index
+      url: '../mainCard/mainCard?bookid='+bookid
     })
   }
 

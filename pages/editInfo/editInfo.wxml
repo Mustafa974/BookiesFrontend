@@ -5,11 +5,14 @@
     <wux-cell-group title="修改个人信息">
       <van-field value="{{ input.name }}" clearable label="姓名" placeholder="书友7号" bind:change="onChange01" />
       <van-field value="{{ input.phone }}" clearable type="phone" label="电话" placeholder="我的手机号码" maxlength='11' bind:change="onChange02" />
+      <picker show="{{ show01 }}" bind:close="onCancel" position="bottom" duration="220" mode='date' value='{{input.birthday}}' start='{{startDate}}' end='{{endDate}}' field='day' bindchange='onChange03'>
+        <van-field value="{{ input.birthday }}" clearable type="birthday" label="生日" placeholder="我的生日" bindtap='onClickBirth' />
+      </picker>
+      <picker show="{{ show02 }}" bind:close="onCancel" position="bottom" duration="220" mode='region' value='{{input.province}}' bindchange='onChange04'>
+        <van-field value="{{ input.province }}" clearable type="province" label="地区" placeholder="我的地址" bindtap='onClickProvince' />
+      </picker>
     </wux-cell-group>
   </form>
   <!-- submit button -->
   <button class='loginButton' bindtap="changeInfo">提交修改</button>
 </view>
-
-<!-- Toast -->
-<van-toast id="van-toast" />

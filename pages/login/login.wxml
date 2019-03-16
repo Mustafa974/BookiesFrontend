@@ -36,6 +36,3 @@
 <van-popup show="{{ show01 }}" bind:close="onCancel" position="bottom" duration="220">
   <van-picker show-toolbar title="请选择您的身份" columns="{{ columns01 }}" item-height="50" bind:cancel="onCancel" bind:change="onChange03" bind:confirm="onCancel" />
 </van-popup>
-
-<!-- Toast -->
-<van-toast id="van-toast" />
