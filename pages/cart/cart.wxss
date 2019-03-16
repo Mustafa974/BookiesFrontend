@@ -10,7 +10,7 @@ page{
 /* cart section start */
 .scroll {
    /* margin-bottom: 120rpx;  */
-   min-height: 1200rpx;
+   min-height: 1000rpx;
 }
 .forClass {
   position: relative;

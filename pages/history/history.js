@@ -1,4 +1,4 @@
-// pages/activities/activity.js 
+// pages/history/history.js
 const app = getApp()
 
 Page({

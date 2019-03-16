@@ -1,4 +1,4 @@
-// pages/activities/activity.js 
+// pages/cart/cart.js 
 const app = getApp()
 
 Page({
@@ -29,8 +29,8 @@ Page({
     that.setData({
       booksInfo: app.globalData.booksInfo,
     })
-    console.log("打印bookInfo")
-    console.log(that.data.booksInfo)
+    // console.log("打印bookInfo")
+    // console.log(that.data.booksInfo)
     // wx.request({
     //   url: 'http://101.132.69.33:2333/getGroupCircleList/getGCListByTime/' + wechaId,
     //   success: res => {
@@ -167,13 +167,13 @@ Page({
         //设置触摸起始点水平方向位置
         startX: e.touches[0].clientX
       });
-      console.log("触摸开始--触摸起始点位置为：");
-      console.log(this.data.startX);
+      // console.log("触摸开始--触摸起始点位置为：");
+      // console.log(this.data.startX);
     }
   },
 
   touchMove: function (e) {
-    console.log("触摸移动");
+    // console.log("触摸移动");
     if (e.touches.length == 1) {
       var that = this;
       //手指移动时水平方向位置
@@ -192,12 +192,11 @@ Page({
         }
       }
       //获取手指触摸的是哪一项
-      var bookid = e.currentTarget.dataset.bookid;
-      console.log("当前书籍id为")
-      console.log(bookid);
-      console.log(txtStyle);
+      var index = e.currentTarget.dataset.index;
+      // console.log("当前下标为"+index)
+      // console.log(txtStyle);
       var list = that.data.booksInfo;
-      list[bookid].txtStyle = txtStyle;
+      list[index].txtStyle = txtStyle;
       //更新列表的状态
       this.setData({
         booksInfo: list,
@@ -207,7 +206,7 @@ Page({
   },
 
   touchEnd: function (e) {
-    console.log("触摸结束");
+    // console.log("触摸结束");
     var that = this;
     if (e.changedTouches.length == 1) {
       //手指移动结束后水平位置
@@ -218,12 +217,11 @@ Page({
       //如果距离小于删除按钮的1/2，不显示删除按钮
       var txtStyle = disX > delBtnWidth / 2 ? "left:-" + delBtnWidth + "rpx" : "left:0rpx";
       //获取手指触摸的是哪一项
-      var bookid = e.currentTarget.dataset.bookid;
-      console.log("当前书籍id为");
-      console.log(bookid);
-      console.log(txtStyle);
+      var index = e.currentTarget.dataset.index;
+      // console.log("当前下标为"+index);
+      // console.log(txtStyle);
       var list = that.data.booksInfo;
-      list[bookid].txtStyle = txtStyle;
+      list[index].txtStyle = txtStyle;
       //更新列表的状态
       this.setData({
         booksInfo: list,
@@ -232,35 +230,22 @@ Page({
     }
   },
 
-  //获取元素自适应后的实际宽度
-  getEleWidth: function (w) {
-    var real = 0;
-    try {
-      var res = wx.getSystemInfoSync().windowWidth;
-      var scale = (750 / 2) / (w / 2);
-      //以宽度750px设计稿做宽度的自适应
-      console.log("打印窗口宽度："+res);
-      console.log("打印缩放比例："+scale);
-      real = Math.floor(res / scale);
-      return real;
-    } catch (e) {
-      return false;
-      // Do something when catch error
-    }
-  },
-
-  // 初始化元素宽度
-  initEleWidth: function () {
-    var delBtnWidth = this.getEleWidth(this.data.delBtnWidth);
-    console.log("计算后的按钮宽度："+delBtnWidth);
-    this.setData({
-      delBtnWidth: delBtnWidth
-    });
-  },
-
   // 删除购物车
   deleteItem: function(e){
-
+    var index = e.currentTarget.dataset.index
+    // console.log("要删除的对象下标为："+index)
+    var list = this.data.booksInfo
+    list.splice(index,1)
+    // console.log("删除完的列表为：")
+    // console.log(list)
+    this.setData({
+      booksInfo: list
+    })
+    wx.showToast({
+      title: '删除成功',
+      icon: 'success',
+      duration: 2000
+    });
   },
 
   // 结算

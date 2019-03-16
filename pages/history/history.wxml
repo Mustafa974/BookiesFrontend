@@ -1,4 +1,4 @@
-<!--pages/cart/cart.wxml-->
+<!--pages/history/history.wxml-->
 <import src="../../template/quantity/quantity.wxml" />
 <wxs module="filters">
   var filters = {
@@ -16,10 +16,37 @@
 <scroll-view class="scroll" scroll-y="true">
   <view class="separate"></view>
   <!-- for each book in booksInfo -->
-  <view wx:for="{{booksInfo}}" class='forClass'>
-    <view class="cart_container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="{{item.txtStyle}}" data-bookid="{{item.id}}">
-      <image class="item-image" src="{{item.imgSrc}}"  data-bookid="{{item.id}}"></image>
-      <view data-bookid="{{item.id}}" bindtap = "deleteItem" class="delButton">删除</view>
+  <view wx:for="{{booksInfo}}" wx:key='index' class='forClass'>
+    <view class="cart_container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="{{item.txtStyle}}" data-bookid="{{item.id}}">  
+      <!-- select icon -->
+      <view  wx:if="{{!item.isSelect}}">
+        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="circle" size="20"></icon>
+      </view>
+      <view wx:elif="{{item.isSelect}}">
+        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="success" color="#92B6D5" size="20"></icon>
+      </view>
+      <!-- book image -->
+      <image class="item-image" src="{{item.imgSrc}}"  data-bookid="{{item.id}}" catchtap='toPage'></image>
+      <view class="column">
+        <!-- book detail -->
+        <text class="title" data-bookid="{{item.id}}" bindtap='toPage'>{{item.title}}</text>
+        <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>{{item.author}}/{{item.publisher}}</text>
+        <view class='row'>
+          <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>本月销量:</text>
+          <text class='subtitle2' data-bookid="{{item.id}}" bindtap='toPage'>{{item.sales}}</text>
+          <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>件/</text>
+          <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>剩余库存:</text>
+          <text class='subtitle2' data-bookid="{{item.id}}" bindtap='toPage'>{{item.stock}}</text>
+          <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>件</text>
+        </view>
+        <view class="row">
+          <text class="sku-price" data-bookid="{{item.id}}" bindtap='toPage'>￥{{filters.toFix(item.price * item.discount * item.count)}}</text>
+          <view class="sku">
+            <template is="{{ 'quantity' }}"  data="{{...item,index:index}}" /> 
+          </view>
+        </view>
+      </view>
+      <view data-index="{{index}}" bindtap = "deleteItem" class="delButton">删除</view>
     </view>
     <view class="separate"></view>
   </view>

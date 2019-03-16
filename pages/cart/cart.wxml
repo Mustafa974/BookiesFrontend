@@ -16,8 +16,8 @@
 <scroll-view class="scroll" scroll-y="true">
   <view class="separate"></view>
   <!-- for each book in booksInfo -->
-  <view wx:for="{{booksInfo}}" class='forClass'>
-    <view class="cart_container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="{{item.txtStyle}}" data-bookid="{{item.id}}">  
+  <view wx:for="{{booksInfo}}" wx:key='index' class='forClass'>
+    <view class="cart_container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="{{item.txtStyle}}" data-index="{{index}}">  
       <!-- select icon -->
       <view  wx:if="{{!item.isSelect}}">
         <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="circle" size="20"></icon>
@@ -46,7 +46,7 @@
           </view>
         </view>
       </view>
-      <view data-bookid="{{item.id}}" bindtap = "deleteItem" class="delButton">删除</view>
+      <view data-index="{{index}}" bindtap = "deleteItem" class="delButton">删除</view>
     </view>
     <view class="separate"></view>
   </view>
