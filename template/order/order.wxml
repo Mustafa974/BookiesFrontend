@@ -1,0 +1,53 @@
+<!--pages/order/order.wxml-->
+
+<!-- Order Template -->
+<template name="order">
+  <!-- for each order in ordersInfo -->
+  <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
+    <view class="order_container" data-orderid="{{orderItem.orderId}}">
+      <view class='row'>
+        <text class='subtitle'>订单号：{{orderItem.orderId}}</text>
+        <text class='subtitle2'>购买时间：{{orderItem.orderTime}}</text>
+      </view>
+      <!-- for each book in an order -->
+      <view wx:for="{{orderItem.orderList}}" wx:for-item="bookItem" class='forClass'>
+        <view class='book_container'>
+          <!-- book image -->
+          <view class='row'>
+            <image class="item-image" src="{{bookItem.imgSrc}}"  data-bookid="{{bookItem.id}}" catchtap='toPage'></image>
+            <view class="column">
+              <!-- book detail -->
+              <text class="title" data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.title}}</text>
+              <text class='subtitle' data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.author}}/{{bookItem.publisher}}</text>
+              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>×{{bookItem.count}}</text>
+              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>ISBN：{{bookItem.isbn}}</text>
+              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>类型：{{bookItem.catagory}}</text>
+              <view class='row'>
+                <text class="subtitle" data-bookid="{{bookItem.id}}" style='text-decoration:line-through' bindtap='toPage'>原价：￥{{filters.toFix(bookItem.price * bookItem.count)}}</text>
+                <text class="sku-price" data-bookid="{{bookItem.id}}" bindtap='toPage'>￥{{filters.toFix(bookItem.price * bookItem.discount * bookItem.count)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='row'>
+        <text class='subtitle'>共计{{orderItem.totalCount}}件商品</text>
+        <text class='subtitle2'>合计：￥{{orderItem.totalPrice}}</text>
+      </view>
+      <text class='subtitle2'>地址：{{orderItem.rLocation}}</text>
+      <view class='column'>
+        <view class='row'>
+          <text class='subtitle2'>收件人：{{orderItem.rName}}</text>
+          <text class='subtitle2'>tel：{{orderItem.rNumber}}</text>
+          <view class='statusBt'>
+            <view wx:if="{{orderItem.orderStatus==0}}">待支付</view>
+            <view wx:elif="{{orderItem.orderStatus==1}}">已支付</view>
+            <view wx:else>确认收货</view>
+          </view>
+        </view>
+        <view class='row'>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

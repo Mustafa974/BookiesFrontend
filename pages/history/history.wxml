@@ -13,52 +13,72 @@
 
 <!-- Book Section -->
 <scroll-view class="scroll" scroll-y="true">
-  <!-- for each order in ordersInfo -->
-  <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
-    <view class="order_container" data-orderid="{{orderItem.orderId}}">
-      <view class='row'>
-        <text class='subtitle'>订单号：{{orderItem.orderId}}</text>
-        <text class='subtitle2'>购买时间：{{orderItem.orderTime}}</text>
-      </view>
-      <!-- for each book in an order -->
-      <view wx:for="{{orderItem.orderList}}" wx:for-item="bookItem" class='forClass'>
-        <view class='book_container'>
-          <!-- book image -->
+  <van-tabs color="#92B6D5" type="card" v-model="active" custom-class='topSelection'>
+    <van-tab title="全部订单">
+      <!-- for each order in ordersInfo -->
+      <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
+        <view class="order_container">
           <view class='row'>
-            <image class="item-image" src="{{bookItem.imgSrc}}"  data-bookid="{{bookItem.id}}" catchtap='toPage'></image>
-            <view class="column">
-              <!-- book detail -->
-              <text class="title" data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.title}}</text>
-              <text class='subtitle' data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.author}}/{{bookItem.publisher}}</text>
-              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>×{{bookItem.count}}</text>
-              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>ISBN：{{bookItem.isbn}}</text>
-              <text class="subtitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>类型：{{bookItem.catagory}}</text>
-              <view class='row'>
-                <text class="subtitle" data-bookid="{{bookItem.id}}" style='text-decoration:line-through' bindtap='toPage'>原价：￥{{filters.toFix(bookItem.price * bookItem.count)}}</text>
-                <text class="sku-price" data-bookid="{{bookItem.id}}" bindtap='toPage'>￥{{filters.toFix(bookItem.price * bookItem.discount * bookItem.count)}}</text>
+            <text class='inner-left text01' style='margin-top:15rpx;'>订单号：{{orderItem.orderId}}</text>
+            <text class='inner-right text02' style='margin-top:15rpx;'>交易时间：{{orderItem.orderTime}}</text>
+          </view>
+          <!-- for each book in an order -->
+          <view wx:for="{{orderItem.orderList}}" wx:for-item="bookItem" class='forClass'>
+            <view class='book_container'>
+              <!-- book image -->
+              <view class='row02'>
+                <image class="bookImg" src="{{bookItem.imgSrc}}"  data-bookid="{{bookItem.id}}" catchtap='toPage'></image>
+                <view class="column">
+                  <!-- book detail -->
+                  <text class="bookTitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.title}}</text>
+                  <text class='text03' data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.author}}/{{bookItem.publisher}}</text>
+                  <view class='row'>
+                    <text class="text03" data-bookid="{{bookItem.id}}" bindtap='toPage' style='flex: 1'>ISBN：{{bookItem.isbn}}</text>
+                    <text class="text03" data-bookid="{{bookItem.id}}" bindtap='toPage' style='margin-right: 10rpx'>×{{bookItem.count}}</text>
+                  </view>
+                  <text class="text03" data-bookid="{{bookItem.id}}" style='margin-left:300rpx;text-decoration:line-through' bindtap='toPage'>原价：￥{{filters.toFix(bookItem.price * bookItem.count)}}</text>
+                  <text class="text02" data-bookid="{{bookItem.id}}" bindtap='toPage' style='margin-left:265rpx'>买入价：￥{{filters.toFix(bookItem.price * bookItem.discount * bookItem.count)}}</text>
+                </view>
               </view>
             </view>
           </view>
-        </view>
-      </view>
-      <view class='row'>
-        <text class='subtitle'>共计{{orderItem.totalCount}}件商品</text>
-        <text class='subtitle2'>合计：￥{{orderItem.totalPrice}}</text>
-      </view>
-      <text class='subtitle2'>地址：{{orderItem.rLocation}}</text>
-      <view class='column'>
-        <view class='row'>
-          <text class='subtitle2'>收件人：{{orderItem.rName}}</text>
-          <text class='subtitle2'>tel：{{orderItem.rNumber}}</text>
-          <view class='statusBt'>
-            <view wx:if="{{orderItem.orderStatus==0}}">待支付</view>
-            <view wx:elif="{{orderItem.orderStatus==1}}">已支付</view>
-            <view wx:else>确认收货</view>
+          <view class='row'>
+            <view class='inner-left'>
+              <image class='icon' src='/assets/icons/cart.png'></image>
+              <text class='text02'>共</text>
+              <text class='text01'>{{orderItem.totalCount}}</text>
+              <text class='text02'>件商品</text>
+            </view>
+            <view class='inner-right'>
+              <text class='text02'>合计:</text>
+              <text class='text01'>￥{{orderItem.totalPrice+orderItem.deliver_fee}}</text>
+              <text class='text02'>(含运费￥{{orderItem.deliver_fee}})</text>
+            </view>
+          </view>
+          <view class='row inner-left'>
+            <image class='icon' src='/assets/icons/location.png'></image>
+            <text class='text02'>地址：{{orderItem.rLocation}}</text>
+          </view>
+          <view class='inner-left'>
+            <image class='icon' src='/assets/icons/me.png'></image>
+            <text class='text02'>收件人：</text>
+            <text class='text01'>{{orderItem.rName}}</text>
+            <text class='text02'>{{orderItem.rNumber}}</text>
+          </view>
+          <view class='bt_container'>
+            <view wx:if="{{orderItem.orderStatus==0}}" class='statusBt status0'>待支付</view>
+            <view wx:elif="{{orderItem.orderStatus==1}}" class='statusBt status1'>已支付</view>
+            <view wx:else class='statusBt status2'>确认收货</view>
           </view>
         </view>
-        <view class='row'>
-        </view>
       </view>
-    </view>
-  </view>
+    </van-tab>
+    <van-tab title="待支付">
+    </van-tab>
+    <van-tab title="已支付">
+    </van-tab>
+    <van-tab title="确认收货">
+    </van-tab>
+  </van-tabs>
+  
 </scroll-view>

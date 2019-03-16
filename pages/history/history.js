@@ -10,14 +10,15 @@ Page({
     // orders info
     ordersInfo: [
       {
-        orderId: 111,
+        orderId: 1111111,
         orderTime: "2019-02-14 08:54:17",
         totalPrice: 49.41,
         totalCount: 3,
         orderStatus: 2,
-        rName: '顾客1号',
+        rName: '穆斯塔法',
         rNumber: 12345678910,
-        rLocation: ['上海市', '上海市', '嘉定区'],
+        rLocation: '上海市嘉定区同济大学嘉定校区',
+        deliver_fee: 7,
         orderList: [
           {
             id: 0,
@@ -29,7 +30,6 @@ Page({
             publisher: "上海人民出版社",
             discount: 0.7,
             count: 2,
-            catagory: "小说",
           }, {
             id: 1,
             title: "活着",
@@ -40,19 +40,19 @@ Page({
             publisher: "作家出版社",
             discount: 0.9,
             count: 1,
-            catagory: "小说",
           },
         ],
       },
       {
-        orderId: 222,
+        orderId: 2222222,
         orderTime: "2019-03-05 23:19:56",
         totalPrice: 64.09,
         totalCount: 3,
         orderStatus: 0,
-        rName: '顾客2号',
+        rName: 'Liebling.',
         rNumber: 12345678910,
-        rLocation: ['上海市', '上海市', '杨浦区'],
+        rLocation: '上海市嘉定区同济大学嘉定校区',
+        deliver_fee: 9,
         orderList: [
           {
             id: 2,
@@ -64,19 +64,19 @@ Page({
             publisher: "上海人民出版社",
             discount: 0.7,
             count: 3,
-            catagory: "小说",
           },
         ],
       },
       {
-        orderId: 333,
+        orderId: 3333333,
         orderTime: "2019-03-15 17:35:09",
         totalPrice: 65.60,
         totalCount: 4,
         orderStatus: 1,
-        rName: '顾客1号',
+        rName: '卤蛋冬瓜',
         rNumber: 12345678910,
-        rLocation: ['上海市', '上海市', '徐汇区'],
+        rLocation: '上海市嘉定区同济大学嘉定校区',
+        deliver_fee: 8,
         orderList: [
           {
             id: 3,
@@ -88,7 +88,6 @@ Page({
             publisher: "作家出版社",
             discount: 0.9,
             count: 1,
-            catagory: "小说",
           }, {
             id: 4,
             title: "皮囊",
@@ -99,7 +98,6 @@ Page({
             publisher: "上海人民出版社",
             discount: 0.8,
             count: 2,
-            catagory: "小说",
           }, {
             id: 5,
             title: "人间失格",
@@ -110,7 +108,6 @@ Page({
             publisher: "作家出版社",
             discount: 0.8,
             count: 1,
-            catagory: "小说",
           },
         ],
       },

@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/history/history",
     "pages/main/main",
     "pages/login/login",
     "pages/index/index",
     "pages/mainCard/mainCard",
     "pages/mine/mine",
     "pages/editInfo/editInfo",
-    "pages/cart/cart",
-    "pages/history/history"
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,13 +19,33 @@
     "enablePullDownRefresh": true
   },
   "usingComponents": {
+    "van-button": "dist/button/index",
     "van-row": "dist/row/index",
     "van-col": "dist/col/index",
+    "van-icon": "dist/icon/index",
     "van-popup": "dist/popup/index",
     "van-picker": "dist/picker/index",
     "van-cell": "dist/cell/index",
+    "van-cell-group": "dist/cell-group/index",
     "van-field": "dist/field/index",
-    "wux-cell-group": "wux/cell-group/index"
+    "van-datetime-picker": "dist/datetime-picker/index",
+    "van-tabs": "dist/tabs/index",
+    "van-tab": "dist/tab/index",
+    "van-panel": "dist/panel/index",
+    "van-swipe-cell": "dist/swipe-cell/index",
+    "van-toast": "dist/toast/index",
+    "van-action-sheet": "dist/action-sheet/index",
+    "van-tag": "dist/tag/index",
+    "wux-divider": "wux/divider/index",
+    "wux-cell-group": "wux/cell-group/index",
+    "wux-cell": "wux/cell/index",
+    "wux-icon": "wux/icon/index",
+    "wux-input": "wux/input/index",
+    "wux-fab-button": "wux/fab-button/index",
+    "wux-button": "wux/button/index",
+    "wux-dialog": "wux/dialog/index",
+    "wux-card": "wux/card/index",
+    "wux-wing-blank": "wux/wing-blank/index"
   },
   "tabBar": {
     "color": "#BFC2C6",
