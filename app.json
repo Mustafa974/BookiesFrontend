@@ -6,7 +6,8 @@
     "pages/mainCard/mainCard",
     "pages/mine/mine",
     "pages/editInfo/editInfo",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/history/history"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,7 +48,7 @@
       {
         "selectedIconPath": "assets/icons/history.png",
         "iconPath": "assets/icons/history_light.png",
-        "pagePath": "pages/cart/cart",
+        "pagePath": "pages/history/history",
         "text": "历史订单"
       },
       {

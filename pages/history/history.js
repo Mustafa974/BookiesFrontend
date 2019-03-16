@@ -12,7 +12,7 @@ Page({
     totalMoney: 0,
     totalCount: 0,
     // 删除按钮的宽度
-    delBtnWidth: 150,
+    delBtnWidth: 200,
     startX: 0,
 
     booksInfo: [],
@@ -22,7 +22,7 @@ Page({
 
   //load group list
   onLoad: function (options) {
-    // this.initEleWidth();
+    this.initEleWidth();
     var that = this
     var wechaId = app.globalData.openId
     var that = this

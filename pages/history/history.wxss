@@ -13,7 +13,7 @@ page{
    min-height: 1200rpx;
 }
 .forClass {
-  position: relative;
+  /* position: relative; */
   width: 100%;
 }
 .cart_container {
@@ -29,17 +29,15 @@ page{
   white-space:nowrap;
 }
 .delButton {
-  width: 150rpx;  
+  width: 200rpx;  
   height: 220rpx;  
-  display: flex;  
-  justify-content: center;  
-  align-items: center; 
+  background-color: rgb(241, 170, 111);  
   position: absolute;  
   top: 0;  
-  right: -150rpx;  
-  background-color: rgb(80, 119, 153); 
-  color: white;
-  font-size: 32rpx;
+  right: -200rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
 }
 .column {
   display: flex;
