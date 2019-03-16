@@ -1,15 +1,5 @@
 <!--pages/history/history.wxml-->
-<wxs module="filters">
-  var filters = {
-  toFix: function (value) {
-    return value.toFixed(2)//此处2为保留两位小数
-  }
-}
-  module.exports = {
-    toFix: filters.toFix
-  }
-</wxs>
-
+<import src="../../template/order/order.wxml" />
 
 <!-- Book Section -->
 <scroll-view class="scroll" scroll-y="true">
@@ -17,67 +7,23 @@
     <van-tab title="全部订单">
       <!-- for each order in ordersInfo -->
       <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
-        <view class="order_container">
-          <view class='row'>
-            <text class='inner-left text01' style='margin-top:15rpx;'>订单号：{{orderItem.orderId}}</text>
-            <text class='inner-right text02' style='margin-top:15rpx;'>交易时间：{{orderItem.orderTime}}</text>
-          </view>
-          <!-- for each book in an order -->
-          <view wx:for="{{orderItem.orderList}}" wx:for-item="bookItem" class='forClass'>
-            <view class='book_container'>
-              <!-- book image -->
-              <view class='row02'>
-                <image class="bookImg" src="{{bookItem.imgSrc}}"  data-bookid="{{bookItem.id}}" catchtap='toPage'></image>
-                <view class="column">
-                  <!-- book detail -->
-                  <text class="bookTitle" data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.title}}</text>
-                  <text class='text03' data-bookid="{{bookItem.id}}" bindtap='toPage'>{{bookItem.author}}/{{bookItem.publisher}}</text>
-                  <view class='row'>
-                    <text class="text03" data-bookid="{{bookItem.id}}" bindtap='toPage' style='flex: 1'>ISBN：{{bookItem.isbn}}</text>
-                    <text class="text03" data-bookid="{{bookItem.id}}" bindtap='toPage' style='margin-right: 10rpx'>×{{bookItem.count}}</text>
-                  </view>
-                  <text class="text03" data-bookid="{{bookItem.id}}" style='margin-left:300rpx;text-decoration:line-through' bindtap='toPage'>原价：￥{{filters.toFix(bookItem.price * bookItem.count)}}</text>
-                  <text class="text02" data-bookid="{{bookItem.id}}" bindtap='toPage' style='margin-left:265rpx'>买入价：￥{{filters.toFix(bookItem.price * bookItem.discount * bookItem.count)}}</text>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class='row'>
-            <view class='inner-left'>
-              <image class='icon' src='/assets/icons/cart.png'></image>
-              <text class='text02'>共</text>
-              <text class='text01'>{{orderItem.totalCount}}</text>
-              <text class='text02'>件商品</text>
-            </view>
-            <view class='inner-right'>
-              <text class='text02'>合计:</text>
-              <text class='text01'>￥{{orderItem.totalPrice+orderItem.deliver_fee}}</text>
-              <text class='text02'>(含运费￥{{orderItem.deliver_fee}})</text>
-            </view>
-          </view>
-          <view class='row inner-left'>
-            <image class='icon' src='/assets/icons/location.png'></image>
-            <text class='text02'>地址：{{orderItem.rLocation}}</text>
-          </view>
-          <view class='inner-left'>
-            <image class='icon' src='/assets/icons/me.png'></image>
-            <text class='text02'>收件人：</text>
-            <text class='text01'>{{orderItem.rName}}</text>
-            <text class='text02'>{{orderItem.rNumber}}</text>
-          </view>
-          <view class='bt_container'>
-            <view wx:if="{{orderItem.orderStatus==0}}" class='statusBt status0'>待支付</view>
-            <view wx:elif="{{orderItem.orderStatus==1}}" class='statusBt status1'>已支付</view>
-            <view wx:else class='statusBt status2'>确认收货</view>
-          </view>
-        </view>
+        <template is="order" data="{{orderItem}}" />
       </view>
     </van-tab>
     <van-tab title="待支付">
+      <view wx:for="{{orderList0}}" wx:for-item="orderItem" class='forClass'>
+        <template is="order" data="{{orderItem}}" />
+      </view>
     </van-tab>
     <van-tab title="已支付">
+      <view wx:for="{{orderList1}}" wx:for-item="orderItem" class='forClass'>
+        <template is="order" data="{{orderItem}}" />
+      </view>
     </van-tab>
     <van-tab title="确认收货">
+      <view wx:for="{{orderList2}}" wx:for-item="orderItem" class='forClass'>
+        <template is="order" data="{{orderItem}}" />
+      </view>
     </van-tab>
   </van-tabs>
   
