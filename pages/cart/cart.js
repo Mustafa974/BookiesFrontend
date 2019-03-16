@@ -25,7 +25,6 @@ Page({
     // this.initEleWidth();
     var that = this
     var wechaId = app.globalData.openId
-    var that = this
     that.setData({
       booksInfo: app.globalData.booksInfo,
     })
