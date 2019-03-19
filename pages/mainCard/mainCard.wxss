@@ -34,7 +34,7 @@
   font-size: 50rpx;
   font-weight: 800;
   line-height: 1;
-  padding: 70rpx 0 15rpx 40rpx;
+  padding: 70rpx 0 15rpx 15rpx;
   color: rgb(42, 81, 116);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -45,7 +45,7 @@
   font-weight: 400;
   line-height: 1;
   color: #929090;
-  padding: 30rpx 5rpx 10rpx 45rpx;
+  padding: 30rpx 5rpx 10rpx 20rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -60,16 +60,16 @@
   font-weight: 400;
   line-height: 1;
   color: #929090;
-  padding: 30rpx 10rpx 0 45rpx;
-  width: 200rpx;
+  padding: 30rpx 15rpx 0 20rpx;
+  /* width: 100rpx; */
 }
 .BookSubH2 {
   font-size: 60rpx;
   font-weight: 900;
   line-height: 1;
-  padding: 30rpx 5rpx 0 0;
+  padding: 30rpx 0 0 5rpx;
   color: #92B6D5;
-  width: 150rpx;
+  /* width: 100rpx; */
 }
 /* book container section end */
 
@@ -87,31 +87,28 @@
 
 .td {
   display: flex;
-  height: 40rpx;
-  width: 650rpx;
+  height: 45rpx;
+  width: 560rpx;
   background: white;
   padding: 15rpx 90rpx 10rpx 20rpx;
   align-items: center;
-  border-bottom: 1rpx solid rgb(240, 253, 255);
+  border-bottom: 1rpx solid rgb(218, 230, 238);
 }
 
 .th {
-  width: 180rpx;
+  width: 140rpx;
   font-size: 34rpx;
   font-weight: 400;
-  margin-left: 85rpx;
-  margin-bottom: 5rpx;
+  padding: 0 0 5rpx 60rpx;
   color: rgb(42, 81, 116);
 }
 
 .tr {
-  width: 500rpx;
+  /* width: 500rpx; */
   font-size: 29rpx;
-  font-weight: 300;
-  margin-left: 20rpx;
-  margin-bottom: 5rpx;
-  margin-right: 40rpx;
-  color: #92B6D5;
+  font-weight: 320;
+  padding: 0 40rpx 5rpx 20rpx;
+  color: rgb(114, 153, 187);
 }
 
 .dis{
@@ -119,18 +116,16 @@
 }
 
 .tr2 {
-  width: 15rpx;
+  /* width: 15rpx; */
   font-size: 29rpx;
-  font-weight: 300;
-  /* margin-left: 10rpx; */
-  margin-bottom: 5rpx;
-  margin-right: 10rpx;
-  color: #92B6D5;
+  font-weight: 320;
+  padding: 0 10rpx 5rpx 0;
+  color: rgb(114, 153, 187);
 }
 
 .discription {
-  height: 250rpx;
-  margin-top: 90rpx;
+  height: 150rpx;
+  margin-top: 65rpx;
 }
 
 .td2 {
@@ -141,12 +136,25 @@
   padding: 15rpx 90rpx 10rpx 20rpx;
   align-items: center;
 }
-
 .bottomButton {
   width: 375rpx;
   height: 100rpx;
   position: fixed;
   bottom: 0;
+  background-color: rgb(248, 253, 255);
+  border: 0.3rpx solid rgb(220, 238, 243);
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600rpx;
+  padding-top: 13rpx;
+  color: rgb(42, 81, 116);
+  z-index: 88;
+}
+.bt2 {
+  width: 375rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 40rpx;
   background-color: rgb(248, 253, 255);
   border: 0.3rpx solid rgb(220, 238, 243);
   text-align: center;
@@ -179,7 +187,7 @@
 }
 
 .image-sku {
-  width: 197rpx;
+  width: 205rpx;
   height: 230rpx;
   margin-left: 70rpx;
   margin-top: 40rpx;

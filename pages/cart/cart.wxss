@@ -83,7 +83,7 @@ page{
 .subtitle {
   font-size: 23rpx;
   margin-top: 3rpx;
-  color: rgb(184, 194, 204);
+  color: rgb(147, 160, 173);
   overflow: hidden; 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -94,7 +94,7 @@ page{
   margin-top: 3rpx;
   margin-left: 4rpx;
   margin-right: 4rpx;
-  color: #92B6D5;
+  color: rgb(120, 153, 182);
 }
 .small_text {
   font-size: 25rpx;

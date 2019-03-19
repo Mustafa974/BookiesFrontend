@@ -23,13 +23,6 @@ Page({
     that.setData({
       input: app.globalData.userInfo
     })
-    // 获取用户信息
-    // if (app.globalData.loginStatus) {
-    //   that.setData({
-    //     input: app.globalData.userInfo
-    //   })
-    //   console.log("用户信息：", that.data.input)
-    // }
   },
 
   // page functions
@@ -40,42 +33,64 @@ Page({
     var that = this
     console.log("表单信息：", app.globalData.openId, that.data.input)
     // 判断表单信息是否完善
-    if (app.globalData.openId != '' && that.data.input.name != '' && that.data.input.phone != '' && that.data.input.birthday != '' && that.data.input.province != '') {
-      wx.showToast({
-        title: '修改信息成功',
-        icon: 'success',
-        duration: 2000
-      });
+    if (app.globalData.openId != '' && that.data.input.name != '' && that.data.input.phone != '' && that.data.input.birthday != '' && that.data.input.province != '' && that.data.input.address != '') {
+      console.log(app.globalData.openId)
+      console.log(that.data.input.name)
+      console.log(that.data.input.phone)
+      console.log(that.data.input.birthday)
+      console.log(that.data.input.province)
+      console.log(that.data.input.address)
+      var new_add = that.data.input.province.join(',') + ',' + that.data.input.address
+      new_add = new_add.split(',')
+      console.log(new_add)
       wx.request({
         // 获取openid，注册用户信息
-        url: 'http://101.132.69.33:2333/user/changeInfo/',
-        method: 'PUT',
+        url: 'http://101.132.69.33:8080/user/modify',
+        method: 'POST',
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
         data: {
-          'avatar': app.globalData.avatarUrl,
           'name': that.data.input.name,
           'phone': that.data.input.phone,
-          'wechatid': app.globalData.openId,
+          'wxId': app.globalData.openId,
           'birthday': that.data.input.birthday,
-          'province': that.data.input.province,
+          'address': new_add,
         },
         success: res => {
-          console.log("修改-用户：", res)
-          // 修改完成之后，提示修改成功并刷新全局数据
-          wx.showToast({
-            title: '修改成功',
-            icon: 'success',
-            duration: 1300
-          });
-          // 刷新数据
-          wx.request({
-            url: 'http://101.132.69.33:2333/user/getInfo/' + app.globalData.openId,
-            success: res => {
-              console.log("查询-用户：", res)
-              app.globalData.userInfo.name = res.data.name
-              app.globalData.userInfo.phone = res.data.phone
-              console.log("当前信息：", app.globalData.userInfo, app.globalData.avatarUrl);
-            }
-          });
+          if(res.statusCode==200){
+            console.log("修改-用户：", res)
+            // 修改完成之后，提示修改成功并刷新全局数据
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success',
+              duration: 1300
+            });
+            // 刷新数据
+            wx.request({
+              url: 'http://101.132.69.33:8080/user/get?wxId=' + app.globalData.openId,
+              success: res => {
+                if (res.statusCode == 200){
+                  console.log("查询-用户：", res)
+                  app.globalData.userInfo.name = res.data.name
+                  app.globalData.userInfo.phone = res.data.phone
+                  var birth = res.data.birthday
+                  birth = birth.substring(0, 10)
+                  console.log(birth)
+                  app.globalData.userInfo.birthday = birth
+                  var tmp_prov, new_prov
+                  tmp_prov = res.data.province + ',' + res.data.city + ',' + res.data.district
+                  new_prov = tmp_prov.split(",")
+                  app.globalData.userInfo.province = new_prov
+                  app.globalData.userInfo.address = res.data.address
+                  console.log("当前信息：", app.globalData.userInfo, app.globalData.avatarUrl);
+                }
+              }
+            });
+          }
+          else {
+            console.log("修改用户信息请求失败！错误状态码：" + res.statusCode)
+          }
         }
       })
     } else {
@@ -135,6 +150,12 @@ Page({
       'input.province': e.detail.value
     })
     console.log(this.data.input.province)
-  }
+  },
+
+  onChange05: function (e) {
+    this.setData({
+      'input.address': e.detail
+    })
+  },
   
 })

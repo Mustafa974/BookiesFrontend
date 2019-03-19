@@ -20,19 +20,33 @@
   <wux-cell-group>
     <view class='listVerti'>
       <image class='mineImg' src='/assets/icons/name.png'></image>
-      <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" />
+      <text class='mineTitle'>姓名</text>
+      <text class='mineData'>{{ userInfo.name }}</text>
+      <!-- <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" /> -->
     </view>
     <view class='listVerti'>
       <image class='mineImg' src='/assets/icons/phone.png' style='height:47rpx'></image>
-      <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" />
+      <text class='mineTitle'>电话</text>
+      <text class='mineData'>{{ userInfo.phone }}</text>
+      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
     </view>
     <view class='listVerti'>
       <image class='mineImg' src='/assets/icons/birthday.png' style='height:45rpx'></image>
-      <van-cell title="生日" size="large" title-class="mineList" value="{{ userInfo.birthday }}" />
+      <text class='mineTitle'>生日</text>
+      <text class='mineData'>{{ userInfo.birthday }}</text>
+      <!-- <van-cell title="生日" size="large" title-class="mineList" value="{{ userInfo.birthday }}" /> -->
     </view>
     <view class='listVerti'>
       <image class='mineImg' src='/assets/icons/location.png' style='height:44rpx'></image>
-      <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' />
+      <text class='mineTitle'>省市</text>
+      <text class='mineData'>{{ userInfo.province }}</text>
+      <!-- <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' /> -->
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/location.png' style='height:44rpx'></image>
+      <text class='mineTitle'>地址</text>
+      <text class='mineData'>{{ userInfo.address }}</text>
+      <!-- <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' /> -->
     </view>
   </wux-cell-group>
   <!-- Functions -->

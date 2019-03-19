@@ -58,17 +58,22 @@
   background-color: #efefef;
   min-height: 900rpx;
 }
-
 .listVerti {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid rgb(231, 231, 231);
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 80rpx;
   /* width: 750rpx; */
 }
 
 .mineImg {
   width: 50rpx;
   height: 40rpx;
-  margin-left: 30rpx;
-  margin-top: 27rpx; 
+  margin-left: 15rpx;
+  margin-top: 10rpx; 
 }
 
 .listMid {
@@ -78,6 +83,22 @@
 
 .mineList {
   font-weight: 450;
-  margin-left: 15rpx;
-  width: 247rpx;
+  /* margin-left: 15rpx; */
+  width: 200rpx;
+}
+
+.mineTitle {
+  font-size: 32rpx;
+  font-weight: 400;
+  color: rgb(56, 56, 56);
+  /* margin: 5prx 10rpx; */
+  padding: 10rpx 10rpx 5rpx 30rpx;
+}
+
+.mineData {
+  font-size: 29rpx;
+  font-weight: 360;
+  color: rgb(56, 56, 56);
+  /* margin: 5prx 10rpx; */
+  padding: 10rpx 0 5rpx 40rpx;
 }

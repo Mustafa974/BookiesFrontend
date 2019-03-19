@@ -25,21 +25,31 @@ Page({
     // this.initEleWidth();
     var that = this
     var wechaId = app.globalData.openId
-    that.setData({
-      booksInfo: app.globalData.booksInfo,
+    wx.request({
+      url: 'http://101.132.69.33:8080/cart/get?page=0&wxId=' + wechaId,
+      success: res => {
+        if(res.statusCode==200){
+          var info = res.data
+          for(let i=0; i<info.length; i++){
+            info[i].txtStyle = ''
+            info[i].isSelected = false
+          }
+          that.setData({
+            booksInfo: info,
+          })
+          console.log(that.data.booksInfo)
+        }
+      }
     })
-    // console.log("打印bookInfo")
-    // console.log(that.data.booksInfo)
-    // wx.request({
-    //   url: 'http://101.132.69.33:2333/getGroupCircleList/getGCListByTime/' + wechaId,
-    //   success: res => {
-    //     var info = res.data
-    //     that.setData({
-    //       cardInfo: info
-    //     })
-    //     console.log(that.data.cardInfo)
-    //   }
-    // })
+  },
+
+  onShow:function(options) {
+    // let pages = getCurrentPages();
+    // let prevpage = pages[pages.length - 2];
+    // console.log("打印当前页面")
+    // console.log(pages)
+    // console.log("打印前一个页面的信息")
+    // console.log(prevpage)
   },
 
   //勾选事件处理函数  
@@ -116,7 +126,7 @@ Page({
     this.setData({
       booksInfo: this.data.booksInfo,
     });
-    console.log("booksInfo:" + this.data.booksInfo);
+    // console.log("booksInfo:" + this.data.booksInfo);
     this.priceCount();
   },
 
@@ -133,7 +143,7 @@ Page({
     this.setData({
       booksInfo: this.data.booksInfo,
     });
-    console.log("booksInfo:" + this.data.booksInfo);
+    // console.log("booksInfo:" + this.data.booksInfo);
     this.priceCount();
   },
 
@@ -155,8 +165,8 @@ Page({
       selectedBooks: list,
     })
     console.log("total price:" + this.data.totalMoney);
-    console.log("selected books:");
-    console.log(this.data.selectedBooks);
+    // console.log("selected books:");
+    // console.log(this.data.selectedBooks);
   },
 
   // 左滑删除相关函数

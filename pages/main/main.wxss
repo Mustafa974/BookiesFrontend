@@ -89,7 +89,7 @@
   font-size: 21rpx;
   font-weight: 300;
   line-height: 1;
-  color: #929090;
+  color: #757575;
   padding: 5rpx 0 3rpx 10rpx;
   overflow: hidden; 
   text-overflow: ellipsis;

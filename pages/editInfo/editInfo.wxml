@@ -9,8 +9,9 @@
         <van-field value="{{ input.birthday }}" clearable type="birthday" label="生日" placeholder="我的生日" bindtap='onClickBirth' />
       </picker>
       <picker show="{{ show02 }}" bind:close="onCancel" position="bottom" duration="220" mode='region' value='{{input.province}}' bindchange='onChange04'>
-        <van-field value="{{ input.province }}" clearable type="province" label="地区" placeholder="我的地址" bindtap='onClickProvince' />
+        <van-field value="{{ input.province }}" clearable type="province" label="省市" placeholder="我的所在地" bindtap='onClickProvince' />
       </picker>
+      <van-field value="{{ input.address }}" clearable type="address" label="地址" placeholder="我的详细地址" bind:change="onChange05" />
     </wux-cell-group>
   </form>
   <!-- submit button -->

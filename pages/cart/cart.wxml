@@ -26,10 +26,10 @@
         <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="success" color="#92B6D5" size="20"></icon>
       </view>
       <!-- book image -->
-      <image class="item-image" src="{{item.imgSrc}}"  data-bookid="{{item.id}}" catchtap='toPage'></image>
+      <image class="item-image" src="{{item.coverUrl}}"  data-bookid="{{item.id}}" catchtap='toPage'></image>
       <view class="column">
         <!-- book detail -->
-        <text class="title" data-bookid="{{item.id}}" bindtap='toPage'>{{item.title}}</text>
+        <text class="title" data-bookid="{{item.id}}" bindtap='toPage'>{{item.name}}</text>
         <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>{{item.author}}/{{item.publisher}}</text>
         <view class='row'>
           <text class='subtitle' data-bookid="{{item.id}}" bindtap='toPage'>本月销量:</text>

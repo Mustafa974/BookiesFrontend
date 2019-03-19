@@ -15,11 +15,11 @@
 <template name="mainCard">
   <view class="mainCardOutline" id="mainCard" data-bookid="{{i.id}}" catchtap='toBookPage'>
     <van-col span="7">
-      <image src="{{i.imgSrc}}" class="mainCardImg"></image>
+      <image src="{{i.coverUrl}}" class="mainCardImg"></image>
     </van-col>
     <van-col span="17">
       <van-row custom-class="mainCardH1">
-        <text>{{ i.title }}</text>
+        <text>{{ i.name }}</text>
       </van-row>
       <van-row custom-class="mainCardSubH1">
         <text text-align="right">{{ i.author }}</text>
