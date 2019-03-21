@@ -7,7 +7,8 @@
     "pages/mine/mine",
     "pages/editInfo/editInfo",
     "pages/cart/cart",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/orderDetail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

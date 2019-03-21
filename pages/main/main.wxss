@@ -76,20 +76,21 @@
 }
 
 .mainCardH1 {
-  font-size: 28rpx;
+  font-size: 27rpx;
   font-weight: 600;
   line-height: 1;
   padding: 23rpx 0 7rpx 10rpx;
   color: rgb(42, 81, 116);
+  overflow: hidden; 
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .mainCardSubH1 {
-  font-size: 21rpx;
+  font-size: 20rpx;
   font-weight: 300;
   line-height: 1;
-  color: #757575;
+  color: #5a5a5a;
   padding: 5rpx 0 3rpx 10rpx;
   overflow: hidden; 
   text-overflow: ellipsis;
@@ -97,10 +98,10 @@
 }
 
 .mainCardSubH2 {
-  font-size: 23rpx;
+  font-size: 22rpx;
   font-weight: 500;
   line-height: 1;
-  color: #92B6D5;
+  color: rgb(112, 149, 180);
   padding: 0 4rpx 0 4rpx;
 }
 
@@ -108,9 +109,9 @@
   font-size: 32rpx;
   font-weight: 500;
   line-height: 1;
-  padding: 15rpx 0 0 69rpx;
-  color: #92B6D5;
-  display: flex;
+  padding: 15rpx 10rpx 0 69rpx;
+  color: rgb(112, 149, 180);
+  /* display: flex; */
 }
 
 /* BookSection ends */

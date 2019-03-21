@@ -5,7 +5,7 @@
   width:90px;  
   height: 25px;  
   /*给主容器设一个边框*/  
-  border: 1rpx solid #92B6D5;  
+  border: 1rpx solid rgb(112, 149, 180);
   border-radius: 3px;  
   margin:0 auto;  
 }  
@@ -16,7 +16,7 @@
   line-height: 26px;  
   text-align: center;  
   float: left;  
-  color: #92B6D5;
+  color: rgb(112, 149, 180);
 }  
   
 /*数值*/  
@@ -29,15 +29,15 @@
   text-align: center;  
   /* position: relative; */
   font-size: 14px;  
-  color: #92B6D5;
+  color: rgb(112, 149, 180);
   /*给中间的input设置左右边框即可*/  
-  border-left: 1rpx solid #92B6D5;  
-  border-right: 1rpx solid #92B6D5;  
+  border-left: 1rpx solid rgb(112, 149, 180);
+  border-right: 1rpx solid rgb(112, 149, 180);
 }  
   
 /*普通样式*/  
 .stepper .normal{  
-  color: #92B6D5;  
+  color: rgb(112, 149, 180); 
 }  
   
 /*禁用样式*/  

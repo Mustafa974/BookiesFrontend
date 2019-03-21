@@ -39,7 +39,7 @@ Page({
 
   onClickHistory: function () {
     wx.switchTab({
-      url: '../History/History',
+      url: '../history/history',
     })
   }
 

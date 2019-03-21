@@ -20,10 +20,10 @@
     <view class="cart_container" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" style="{{item.txtStyle}}" data-index="{{index}}">  
       <!-- select icon -->
       <view  wx:if="{{!item.isSelect}}">
-        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-cartid="{{item.cartId}}"  type="circle" size="20"></icon>
+        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="circle" size="20"></icon>
       </view>
       <view wx:elif="{{item.isSelect}}">
-        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-cartid="{{item.cartId}}"  type="success" color="#92B6D5" size="20"></icon>
+        <icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}"  type="success" color="#92B6D5" size="20"></icon>
       </view>
       <!-- book image -->
       <image class="item-image" src="{{item.coverUrl}}"  data-bookid="{{item.id}}" catchtap='toPage'></image>

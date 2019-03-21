@@ -16,21 +16,33 @@ Page({
     startX: 0,
 
     booksInfo: [],
-    selectedBooks:[],
+    selectedBookList:[],
 
   },
 
   //load group list
   onLoad: function (options) {
     // this.initEleWidth();
+    this.RefreshPage();
+  },
+
+  onShow:function(options) {
+    this.RefreshPage();
+  },
+
+  onPullDownRefresh:function(e) {
+    this.RefreshPage();
+  },
+
+  RefreshPage:function(e) {
     var that = this
     var wechaId = app.globalData.openId
     wx.request({
       url: 'http://101.132.69.33:8080/cart/get?page=0&wxId=' + wechaId,
       success: res => {
-        if(res.statusCode==200){
+        if (res.statusCode == 200) {
           var info = res.data
-          for(let i=0; i<info.length; i++){
+          for (let i = 0; i < info.length; i++) {
             info[i].txtStyle = ''
             info[i].isSelected = false
           }
@@ -43,21 +55,16 @@ Page({
     })
   },
 
-  onShow:function(options) {
-    // let pages = getCurrentPages();
-    // let prevpage = pages[pages.length - 2];
-    // console.log("打印当前页面")
-    // console.log(pages)
-    // console.log("打印前一个页面的信息")
-    // console.log(prevpage)
-  },
-
   //勾选事件处理函数  
   switchSelect: function (e) {
     // 获取item项的id，和数组的下标值  
     var Allprice = 0, i = 0;
-    let id = e.target.dataset.id,
+    let cartid = e.target.dataset.cartid,
     index = parseInt(e.target.dataset.index);
+    var bklist = this.data.selectedBookList
+    bklist.push(cartid)
+    // console.log("selected book list:")
+    // console.log(bklist)
     this.data.booksInfo[index].isSelect = !this.data.booksInfo[index].isSelect;
     //价钱统计
     if (this.data.booksInfo[index].isSelect) {
@@ -70,12 +77,15 @@ Page({
     }
     //是否全选判断
     for (i = 0; i < this.data.booksInfo.length; i++) {
-      Allprice = Allprice + (this.data.booksInfo[index].price * this.data.booksInfo[index].discount * this.data.booksInfo[index].count);
+      Allprice = Allprice + (this.data.booksInfo[i].price * this.data.booksInfo[i].discount * this.data.booksInfo[i].count);
     }
+    // console.log("all price is " + Allprice + ", total money is " + this.data.totalMoney)
     if (Allprice == this.data.totalMoney) {
+      // console.log("all selected")
       this.data.isAllSelect = true;
     }
     else {
+      // console.log("not all selected")
       this.data.isAllSelect = false;
     }
     this.setData({
@@ -83,6 +93,7 @@ Page({
       totalMoney: this.data.totalMoney,
       totalCount: this.data.totalCount,
       isAllSelect: this.data.isAllSelect,
+      selectedBookList: bklist
     })
   },
 
@@ -92,10 +103,12 @@ Page({
     let i = 0;
     if (!this.data.isAllSelect) {
       this.data.totalMoney = 0;
+      this.data.selectedBookList = [];
       for (i = 0; i < this.data.booksInfo.length; i++) {
         this.data.booksInfo[i].isSelect = true;
         this.data.totalMoney += (this.data.booksInfo[i].price * this.data.booksInfo[i].discount * this.data.booksInfo[i].count);
         this.data.totalCount += this.data.booksInfo[i].count;
+        this.data.selectedBookList.push(this.data.booksInfo[i].cartId);
       }
     }
     else {
@@ -104,12 +117,16 @@ Page({
       }
       this.data.totalMoney = 0;
       this.data.totalCount = 0;
+      this.data.selectedBookList = [];
     }
+    // console.log("all select button, selected book list:")
+    // console.log(this.data.selectedBookList)
     this.setData({
       booksInfo: this.data.booksInfo,
       isAllSelect: !this.data.isAllSelect,
       totalMoney: this.data.totalMoney,
       totalCount: this.data.totalCount,
+      selectedBookList: this.data.selectedBookList
     })
   },
 
@@ -145,6 +162,37 @@ Page({
     });
     // console.log("booksInfo:" + this.data.booksInfo);
     this.priceCount();
+  },
+
+  // save change of book count
+  saveCountChange:function(e){
+    var that = this
+    console.log(that.data.booksInfo)
+    wx.request({
+      url: 'http://101.132.69.33:8080/cart/save',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      data: {
+        'bookId': bookid,
+        'count': count,
+        'wxId': app.globalData.openId
+      },
+      success: res => {
+        if (res.statusCode == 200) {
+          var info = res.data
+          console.log("成功更新购物车")
+          that.setData({
+            showDialog: false,
+            'bookInfo.count': 1
+          })
+        }
+        else {
+          console.log("加入购物车失败，状态码为：" + res.statusCode)
+        }
+      }
+    })
   },
 
   // calculate total price
@@ -240,15 +288,35 @@ Page({
   },
 
   // 删除购物车
-  deleteItem: function(e){
-    var index = e.currentTarget.dataset.index
-    // console.log("要删除的对象下标为："+index)
-    var list = this.data.booksInfo
-    list.splice(index,1)
-    // console.log("删除完的列表为：")
-    // console.log(list)
-    this.setData({
-      booksInfo: list
+  deleteItem: function (e) {
+    var that = this
+    var wxId = app.globalData.openId
+    var bookId = e.currentTarget.dataset.bookid
+    console.log("要删除的书籍id为："+bookId)
+    wx.request({
+      url: 'http://101.132.69.33:8080/cart/delete?bookId=' + bookId + '&wxId=' + wxId,
+      method: 'DELETE',
+      data: {
+        'bookId': bookId,
+        'wxId': wxId
+      },
+      success: res => {
+        if (res.statusCode == 200) {
+          this.RefreshPage();
+          // var info = res.data
+          // for (let i = 0; i < info.length; i++) {
+          //   info[i].txtStyle = ''
+          //   info[i].isSelected = false
+          // }
+          // that.setData({
+          //   booksInfo: info,
+          // })
+          console.log("删除书籍成功")
+        }
+        else {
+          console.log("删除书籍失败")
+        }
+      }
     })
     wx.showToast({
       title: '删除成功',
@@ -260,12 +328,28 @@ Page({
   // 结算
   toBuy() {
     console.log("进行结算");
-    this.priceCount();
-    wx.showToast({
-      title: '结算成功',
-      icon: 'success',
-      duration: 3000
-    });
+    // console.log("selected book list:")
+    // console.log(this.data.selectedBookList)
+    if(this.data.selectedBookList.length==0){
+      console.log("没有选择商品进行结算！")
+      wx.showToast({
+        title: '请选择商品！',
+        icon: 'none',
+        duration: 3000
+      });
+    }
+    else {
+      this.priceCount();
+      console.log("url: ../orderDetail/orderDetail?cartidList=" + this.data.selectedBookList)
+      // wx.showToast({
+      //   title: '进行结算',
+      //   icon: 'success',
+      //   duration: 1500
+      // });
+      wx.navigateTo({
+        url: '../orderDetail/orderDetail?cartidList=' + this.data.selectedBookList
+      })
+    }
   },
 
   // toPages

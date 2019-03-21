@@ -158,6 +158,13 @@ Page({
     })
   },
 
+  // 跳转购物车
+  onClickCart: function () {
+    wx.switchTab({
+      url: '../cart/cart',
+    })
+  },
+
   // 计算总价
   priceCount: function (e) {
     this.data.totalMoney = 0;

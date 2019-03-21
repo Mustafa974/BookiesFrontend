@@ -87,13 +87,17 @@
 
 <!-- Bottom Button -->
 <block>
+  <!-- 跳转购物车 -->
+  <van-col span="12">
+    <image class="{{isIpX?'cartBt2':'cartBt'}}" src='/assets/icons/cart.png' bindtap='onClickCart'/>
+  </van-col>
   <!-- 加入购物车 -->
   <van-col span="12">
     <button class="{{isIpX?'bt2':'bottomButton'}}" bindtap='toggleDialog'>加入购物车</button>
   </van-col>
   <!-- 编辑组团 -->
   <van-col span="12" style="display: flex;justify-content: flex-end">
-    <button class="{{isIpX?'bt2':'bottomButton'}}" bindtap='exitConfirm'>立即购买</button>
+    <button class="{{isIpX?'bt2':'bottomButton'}}" style='margin-left:45rpx' bindtap='exitConfirm'>立即购买</button>
   </van-col>
 </block>
 

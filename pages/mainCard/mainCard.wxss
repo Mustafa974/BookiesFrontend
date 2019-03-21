@@ -44,7 +44,7 @@
   font-size: 28rpx;
   font-weight: 400;
   line-height: 1;
-  color: #929090;
+  color: #5a5a5a;
   padding: 30rpx 5rpx 10rpx 20rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -59,7 +59,7 @@
   font-size: 28rpx;
   font-weight: 400;
   line-height: 1;
-  color: #929090;
+  color: #5a5a5a;
   padding: 30rpx 15rpx 0 20rpx;
   /* width: 100rpx; */
 }
@@ -136,8 +136,26 @@
   padding: 15rpx 90rpx 10rpx 20rpx;
   align-items: center;
 }
+.cartBt {
+  width: 60rpx;
+  height: 64rpx;
+  position: fixed;
+  z-index: 88;
+  bottom: 0;
+  margin-left: 15rpx;
+  margin-bottom: 20rpx;
+}
+.cartBt2 {
+  width: 60rpx;
+  height: 64rpx;
+  position: fixed;
+  z-index: 88;
+  bottom: 40rpx;
+  margin-left: 15rpx;
+  margin-bottom: 20rpx;
+}
 .bottomButton {
-  width: 375rpx;
+  width: 330rpx;
   height: 100rpx;
   position: fixed;
   bottom: 0;
@@ -149,9 +167,10 @@
   padding-top: 13rpx;
   color: rgb(42, 81, 116);
   z-index: 88;
+  margin-left: 90rpx;
 }
 .bt2 {
-  width: 375rpx;
+  width: 330rpx;
   height: 100rpx;
   position: fixed;
   bottom: 40rpx;
@@ -163,6 +182,7 @@
   padding-top: 13rpx;
   color: rgb(42, 81, 116);
   z-index: 88;
+  margin-left: 90rpx;
 }
 /* book detail section end */
 
@@ -187,10 +207,10 @@
 }
 
 .image-sku {
-  width: 205rpx;
-  height: 230rpx;
-  margin-left: 70rpx;
-  margin-top: 40rpx;
+  width: 210rpx;
+  height: 240rpx;
+  margin-left: 60rpx;
+  margin-top: 30rpx;
 }
 
 .image-close {
@@ -199,7 +219,7 @@
 }
 
 .sku-price {
-  color: #92B6D5;
+  color: rgb(112, 149, 180);
   font-size: 35rpx;
   position: relative;
   font-weight: 600rpx;
@@ -212,7 +232,7 @@
 }
 
 .sku-value {
-  color: #92B6D5;
+  color: rgb(112, 149, 180);
   font-size: 30rpx;
   font-weight: 400rpx;
 }

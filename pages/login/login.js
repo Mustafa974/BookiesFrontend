@@ -9,6 +9,7 @@ Page({
     // status
     authorization: false,
     openId: [],
+    loginStatus: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
     // input userInfo
@@ -37,7 +38,7 @@ Page({
         // 如果已经授权
         if (res.authSetting['scope.userInfo']) {
           app.globalData.authorization = true
-          console.log("是否授权：", app.globalData.authorization)
+          // console.log("是否授权：", app.globalData.authorization)
           // 获取用户openId
           wx.login({
             success: res => {
@@ -55,59 +56,7 @@ Page({
                     })
                     // 如果已经注册，直接进行登陆
                     // 如果没有，进入信息填写界面
-                    wx.request({
-                      url: 'http://101.132.69.33:8080/user/get?wxId=' + app.globalData.openId,
-                      success: res => {
-                        if(res.statusCode==200){
-                          console.log("查询-用户：", res)
-                          // 如果用户已经完成注册，设置已登陆标识
-                          if (res.data) {
-                            app.globalData.loginStatus = true
-                            that.setData({
-                              loginStatus: app.globalData.loginStatus
-                            })
-                            // 获取注册信息
-                            app.globalData.userInfo.name = res.data.name
-                            app.globalData.userInfo.phone = res.data.phone
-                            var birth = res.data.birthday
-                            birth = birth.substring(0, 10)
-                            console.log(birth)
-                            app.globalData.userInfo.birthday = birth
-                            var tmp_prov, new_prov
-                            tmp_prov = res.data.province + ',' + res.data.city + ',' + res.data.district
-                            new_prov = tmp_prov.split(",")
-                            app.globalData.userInfo.province = new_prov
-                            app.globalData.userInfo.address = res.data.address
-                            console.log("注册状态：", that.data.loginStatus)
-                            console.log("用户信息：", app.globalData.userInfo)
-                            wx.getUserInfo({
-                              success(res) {
-                                console.log("获取用户头像信息")
-                                // 储存用户头像
-                                app.globalData.avatarUrl = res.userInfo.avatarUrl
-                              }
-                            })
-                            // 自动跳转页面
-                            wx.switchTab({
-                              url: '../../pages/main/main',
-                            })
-                            console.log("自动进入")
-                          } else {
-                            console.log("No loginStatus")
-                            wx.getUserInfo({
-                              success(res) {
-                                console.log("获取信息：", res.userInfo)
-                                // 储存用户头像
-                                app.globalData.avatarUrl = res.userInfo.avatarUrl
-                              }
-                            })
-                          }
-                        }
-                        else{
-                          console.log("获取用户信息请求失败！错误状态码："+res.statusCode)
-                        }
-                      }
-                    })
+                    that.GetUserInfo()
                   } else {
                     console.log("No authorization")
                   }
@@ -121,6 +70,64 @@ Page({
   },
 
   // page functions
+
+  // get user info
+  GetUserInfo:function(e){
+    var that = this
+    wx.request({
+      url: 'http://101.132.69.33:8080/user/get?wxId=' + app.globalData.openId,
+      success: res => {
+        if (res.statusCode == 200) {
+          console.log("查询-用户：", res)
+          // 如果用户已经完成注册，设置已登陆标识
+          if (res.data) {
+            app.globalData.loginStatus = true
+            that.setData({
+              loginStatus: app.globalData.loginStatus
+            })
+            // 获取注册信息
+            app.globalData.userInfo.name = res.data.name
+            app.globalData.userInfo.phone = res.data.phone
+            var birth = res.data.birthday
+            birth = birth.substring(0, 10)
+            // console.log(birth)
+            app.globalData.userInfo.birthday = birth
+            var tmp_prov, new_prov
+            tmp_prov = res.data.province + ',' + res.data.city + ',' + res.data.district
+            new_prov = tmp_prov.split(",")
+            app.globalData.userInfo.province = new_prov
+            app.globalData.userInfo.address = res.data.address
+            console.log("注册状态：", that.data.loginStatus)
+            console.log("用户信息：", app.globalData.userInfo)
+            wx.getUserInfo({
+              success(res) {
+                console.log("获取用户头像信息")
+                // 储存用户头像
+                app.globalData.avatarUrl = res.userInfo.avatarUrl
+              }
+            })
+            // 自动跳转页面
+            wx.switchTab({
+              url: '../../pages/main/main',
+            })
+            console.log("自动进入")
+          } else {
+            console.log("No loginStatus")
+            wx.getUserInfo({
+              success(res) {
+                console.log("获取信息：", res.userInfo)
+                // 储存用户头像
+                app.globalData.avatarUrl = res.userInfo.avatarUrl
+              }
+            })
+          }
+        }
+        else {
+          console.log("获取用户信息请求失败！错误状态码：" + res.statusCode)
+        }
+      }
+    })
+  },
 
   // SignUp
   SignUp: function () {
@@ -195,6 +202,48 @@ Page({
     wx.reLaunch({
       url: '../login/login',
     })
+  },
+  bindGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
+      //用户按了允许授权按钮
+      var that = this;
+      //插入登录的用户的相关信息到数据库
+      wx.request({
+        url: app.globalData.urlPath + 'user/add',
+        data: {
+          openid: getApp().globalData.openid,
+          nickName: e.detail.userInfo.nickName,
+          avatarUrl: e.detail.userInfo.avatarUrl,
+          province: e.detail.userInfo.province,
+          city: e.detail.userInfo.city
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          //从数据库获取用户信息
+          that.queryUsreInfo();
+          console.log("插入小程序登录用户信息成功！");
+        }
+      });
+      //授权成功后，跳转进入小程序首页
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    } else {
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击了“返回授权”')
+          }
+        }
+      })
+    }
   },
 
   // on click birthday
