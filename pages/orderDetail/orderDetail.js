@@ -1,25 +1,34 @@
-// pages/cart/cart.js 
+// pages/orderDetail/orderDetail.js
 const app = getApp()
 
 Page({
 
   data: {
-
+    cartidList: [],
   },
 
   //load group list
   onLoad: function (detail) {
-    var cartidList = detail.cartidList.split(',')
-    console.log(cartidList)
+    var that = this
+    var list = detail.cartidList.split(',')
+    that.setData({
+      cartidList: list,
+    })
+    console.log(that.data.cartidList)
   },
 
-  // toPages
-  toPage: function (e) {
+  //pay
+  pay:function(e){
+
+  },
+
+  //jump to order page
+  toOrderPage:function(e){
     var bookid = e.currentTarget.dataset.bookid
     console.log(bookid)
     wx.navigateTo({
-      url: '../mainCard/mainCard?bookid=' + bookid
+      url: '../history/history'
     })
-  },
+  }
 
 })

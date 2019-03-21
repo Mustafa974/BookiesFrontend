@@ -22,11 +22,16 @@ Page({
 
   //load group list
   onLoad: function (options) {
-    // this.initEleWidth();
     this.RefreshPage();
   },
 
   onShow:function(options) {
+    this.setData({
+      isAllSelect: false,
+      totalMoney: 0,
+      totalCount: 0,
+      selectedBookList: []
+    })
     this.RefreshPage();
   },
 
@@ -145,6 +150,7 @@ Page({
     });
     // console.log("booksInfo:" + this.data.booksInfo);
     this.priceCount();
+    this.saveCountChange(e);
   },
 
   /* 加数 */
@@ -162,12 +168,15 @@ Page({
     });
     // console.log("booksInfo:" + this.data.booksInfo);
     this.priceCount();
+    this.saveCountChange(e);
   },
 
   // save change of book count
   saveCountChange:function(e){
     var that = this
-    console.log(that.data.booksInfo)
+    var index = e.target.dataset.index
+    var bookid = this.data.booksInfo[index].id;
+    var count = this.data.booksInfo[index].count;
     wx.request({
       url: 'http://101.132.69.33:8080/cart/save',
       method: 'POST',
@@ -181,15 +190,10 @@ Page({
       },
       success: res => {
         if (res.statusCode == 200) {
-          var info = res.data
           console.log("成功更新购物车")
-          that.setData({
-            showDialog: false,
-            'bookInfo.count': 1
-          })
         }
         else {
-          console.log("加入购物车失败，状态码为：" + res.statusCode)
+          console.log("更新购物车失败，状态码为：" + res.statusCode)
         }
       }
     })
@@ -341,11 +345,6 @@ Page({
     else {
       this.priceCount();
       console.log("url: ../orderDetail/orderDetail?cartidList=" + this.data.selectedBookList)
-      // wx.showToast({
-      //   title: '进行结算',
-      //   icon: 'success',
-      //   duration: 1500
-      // });
       wx.navigateTo({
         url: '../orderDetail/orderDetail?cartidList=' + this.data.selectedBookList
       })
