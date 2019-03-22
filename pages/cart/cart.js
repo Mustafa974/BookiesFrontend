@@ -108,6 +108,7 @@ Page({
     let i = 0;
     if (!this.data.isAllSelect) {
       this.data.totalMoney = 0;
+      this.data.totalCount = 0;
       this.data.selectedBookList = [];
       for (i = 0; i < this.data.booksInfo.length; i++) {
         this.data.booksInfo[i].isSelect = true;

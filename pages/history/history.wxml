@@ -12,17 +12,17 @@
     </van-tab>
     <van-tab title="待支付">
       <view wx:for="{{orderList0}}" wx:for-item="orderItem" class='forClass'>
-        <template is="order" data="{{orderItem}}" />
+        <template is="order0" data="{{orderItem}}" />
       </view>
     </van-tab>
     <van-tab title="已支付">
       <view wx:for="{{orderList1}}" wx:for-item="orderItem" class='forClass'>
-        <template is="order" data="{{orderItem}}" />
+        <template is="order1" data="{{orderItem}}" />
       </view>
     </van-tab>
     <van-tab title="确认收货">
       <view wx:for="{{orderList2}}" wx:for-item="orderItem" class='forClass'>
-        <template is="order" data="{{orderItem}}" />
+        <template is="order2" data="{{orderItem}}" />
       </view>
     </van-tab>
   </van-tabs>

@@ -99,10 +99,15 @@
   border: 0.3rpx solid rgb(203, 236, 200);
   color: rgb(117, 173, 106);
 }
+.status3 {
+  background-color: rgb(250, 234, 234);
+  border: 0.3rpx solid rgb(236, 200, 200);
+  color: rgb(173, 106, 106);
+}
 .statusBt {
-  width: 150rpx;
+  width: 180rpx;
   height: 60rpx;
-  margin-left: 500rpx;
+  margin-left: 480rpx;
   border-radius: 12rpx;
   font-size: 29rpx;
   font-weight: 600;

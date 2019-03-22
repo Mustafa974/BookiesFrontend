@@ -21,20 +21,19 @@ page{
 
 /* Body Section start */
 .order_container {
-  width: 100%;
+  width: 96%;
   min-height: 300rpx;
   background-color: #FFFFFF;
   margin-top: 17rpx;
+  margin-left: 1.9%;
   border-radius: 14rpx;
 }
 .book_container {
-  width: 94%;
+  width: 96%;
   min-height: 200rpx;
   margin-top: 15rpx;
-  margin-left: 2.9%;
-  border-radius: 10rpx;
-  background-color: rgb(248, 253, 255);
-  border: 0.3rpx solid rgb(220, 238, 243);
+  margin-left: 1.9%;
+  border-bottom: 0.3rpx solid rgb(234, 239, 241);
 }
 .bt_container {
   width: 94%;
@@ -98,36 +97,20 @@ page{
 .icon {
   width: 35rpx;
   height: 29rpx;
-  margin-right: 9rpx;
-}
-.status0 {
-  background-color: rgb(255, 243, 217);
-  border: 0.3rpx solid rgb(255, 240, 190);
-  color: rgb(231, 189, 71);
-}
-.status1 {
-  background-color: rgb(248, 253, 255);
-  border: 0.3rpx solid rgb(220, 238, 243);
-  color: #92B6D5;
-}
-.status2 {
-  background-color: rgb(237, 250, 234);
-  border: 0.3rpx solid rgb(203, 236, 200);
-  color: rgb(117, 173, 106);
-}
-.statusBt {
-  width: 150rpx;
-  height: 60rpx;
-  margin-left: 500rpx;
-  border-radius: 12rpx;
-  font-size: 29rpx;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-right: 12rpx;
 }
 /* Body Section end */
 
+/* Address Section start */
+.address_container {
+  width: 100%;
+  min-height: 470rpx;
+  background-color: #FFFFFF;
+  margin-top: 17rpx;
+  /* position: fixed;
+  bottom: 120rpx; */
+}
+/* Address Section end */
 
 /* Bottom Section start */
  .bottom_line {
@@ -155,7 +138,7 @@ page{
   display: inline-block;
   font-size: 30rpx;
   border-radius: 0rpx;
-  width: 24%;
+  width: 30%;
   height: 100rpx;
   line-height: 100rpx;
 }

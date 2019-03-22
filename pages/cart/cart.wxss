@@ -154,6 +154,7 @@ page{
   width: 24%;
   height: 100rpx;
   line-height: 100rpx;
+  z-index: 9999;
 }
 
 /* Bottom Section end */

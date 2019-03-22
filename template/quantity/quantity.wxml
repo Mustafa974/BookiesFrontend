@@ -7,7 +7,7 @@
       <!-- 减号 -->  
       <text class="{{count <= 1 ? 'disabled' : 'normal'}}" bindtap="delCount" data-index="{{index}}">-</text>  
       <!-- 数值 -->  
-      <input type="number" bindchange="bindManual" value="{{count}}"  disabled="disabled"/>  
+      <input type="number" bindchange="bindManual" value="{{count}}"  />  
       <!-- 加号 -->  
       <text class="{{count >= 20 ? 'disabled' : 'normal'}}" bindtap="addCount" data-index="{{index}}">+</text>  
   </view>  

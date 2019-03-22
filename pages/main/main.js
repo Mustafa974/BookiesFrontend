@@ -45,7 +45,7 @@ Page({
   onLoad: function(options) {
     var that = this
     wx.request({
-      url: 'http://101.132.69.33:8080/book/getAll',
+      url: 'http://101.132.69.33:8080/book/getAll?page=0',
       success: res => {
         if (res.statusCode == 200) {
           var info = res.data
@@ -77,7 +77,7 @@ Page({
     var that = this
     var wechaId = app.globalData.openId
     wx.request({
-      url: 'http://101.132.69.33:8080/book/getAll',
+      url: 'http://101.132.69.33:8080/book/getAll?page=0',
       success: res => {
         if (res.statusCode == 200) {
           var info = res.data
