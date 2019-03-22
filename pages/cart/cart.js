@@ -307,27 +307,24 @@ Page({
       },
       success: res => {
         if (res.statusCode == 200) {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 2000
+          });
           this.RefreshPage();
-          // var info = res.data
-          // for (let i = 0; i < info.length; i++) {
-          //   info[i].txtStyle = ''
-          //   info[i].isSelected = false
-          // }
-          // that.setData({
-          //   booksInfo: info,
-          // })
           console.log("删除书籍成功")
         }
         else {
+          wx.showToast({
+            title: '删除失败！',
+            icon: 'none',
+            duration: 2000
+          });
           console.log("删除书籍失败")
         }
       }
     })
-    wx.showToast({
-      title: '删除成功',
-      icon: 'success',
-      duration: 2000
-    });
   },
 
   // 结算

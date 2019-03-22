@@ -119,7 +119,7 @@
       <text class='text02'>{{orderItem.receiverPhone}}</text>
     </view>
     <view class='bt_container'>
-      <button class='statusBt status3' bindtap='onPay'>去支付</button>
+      <button class='statusBt status3' data-orderid='{{orderItem.id}}' bindtap='onConfirmPay'>去支付</button>
     </view>
   </view>
 </template>
@@ -175,7 +175,7 @@
       <text class='text02'>{{orderItem.receiverPhone}}</text>
     </view>
     <view class='bt_container'>
-      <button class='statusBt status3' bindtap='onConfirmDelivery'>确认收货</button>
+      <button class='statusBt status3' data-orderid='{{orderItem.id}}' bindtap='onConfirmDelivery'>确认收货</button>
     </view>
   </view>
 </template>

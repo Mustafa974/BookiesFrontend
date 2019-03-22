@@ -28,3 +28,7 @@
   </van-tabs>
   
 </scroll-view>
+
+<van-dialog show="{{ show01 }}" bind:cancel="onCancel" bind:confirm="onPay" show-cancel-button="true" message="是否确认支付？"/>
+
+<van-dialog show="{{ show02 }}" bind:cancel="onCancel" bind:confirm="onDelivery" show-cancel-button="true" message="是否确认收货？"/>

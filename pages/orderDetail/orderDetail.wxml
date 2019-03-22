@@ -63,14 +63,6 @@
   </form>
 </view>
 
-<!-- <van-popup show="{{showConfirm}}" position="bottom">
-  <text>haha</text>
-</van-popup> -->
-
-<van-dialog show="{{ showConfirm }}" bind:cancel="onCancelPay" bind:confirm="onPay" show-cancel-button="true" message="是否确认支付？">
-  <!-- <text>haha</text> -->
-</van-dialog>
-
 <!-- Bottoom Section -->
 <view class="bottom_total" hidden="{{hidden}}">
   <view class="bottom_line"></view>
@@ -84,3 +76,6 @@
     <button class="button" bindtap="onConfirm" formType="submit">确认订单</button>
   </view>
 </view> 
+
+<van-dialog show="{{ showConfirm }}" bind:cancel="onCancelPay" bind:confirm="onPay" show-cancel-button="true" message="是否确认支付？">
+</van-dialog>

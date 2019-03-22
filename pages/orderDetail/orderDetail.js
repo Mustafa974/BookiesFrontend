@@ -106,6 +106,9 @@ Page({
     that.setData({
       showConfirm: false,
     })
+    wx.switchTab({
+      url: '/pages/history/history',
+    })
   },
 
   onConfirm:function(e) {
@@ -170,26 +173,23 @@ Page({
       showConfirm: false,
     })
     wx.request({
-      url: 'http://101.132.69.33:8080/order/pay',
+      url: 'http://101.132.69.33:8080/order/pay?orderId='+that.data.orderId,
       method: 'POST',
       header: {
         'content-type': 'application/json' // 默认值
       },
       data: {
-        'orderId': that.data.orderId,
       },
       success: res => {
         if (res.statusCode == 200) {
           wx.showToast({
             title: '支付成功',
             icon: 'success',
-            duration: 2000,
+            duration: 1000,
             success: function () {
               setTimeout(function () {
-                wx.navigateTo({
-                  url: '../history/history',
-                })
-              }, 2000);
+                wx.switchTab({ url: '/pages/history/history' })   
+              }, 1000);
             }
           })
         }
@@ -206,43 +206,3 @@ Page({
   },
 
 })
-
-
-// {
-//   cartId: 14,
-//     count: 1,
-//       time: '2019-03-21 23:12:15',
-//         bookInfo:
-//   {
-//     id: 1,
-//       isbn: 9787559413727,
-//         name: '我们一无所有',
-//           coverUrl: '/assets/images/img/img_nothing.png',
-//             price: 49.80,
-//               discount: 0.90,
-//                 stock: 96,
-//                   sales: 9,
-//                     author: '安东尼·马拉',
-//                       publisher: '江苏凤凰文艺出版社',
-//                         description: '大时代、小人物的命运悲歌，用厚重而文艺的笔触控诉我们这个时代的罪恶。',
-//         },
-// },
-// {
-//   cartId: 15,
-//     count: 3,
-//       time: '2019-03-21 23:12:26',
-//         bookInfo:
-//   {
-//     id: 12,
-//       isbn: 9787559813473,
-//         name: '英国特工阿申登',
-//           coverUrl: '/assets/images/img/img_agent.png',
-//             price: 58.00,
-//               discount: 0.77,
-//                 stock: 103,
-//                   sales: 15,
-//                     author: '毛姆',
-//                       publisher: '广西师范大学出版社',
-//                         description: '毛姆以特工阿申登作为串联故事的任务，通过兼具文学性与真实感的叙事、诙谐犀利的风格，塑造了令人印象深刻的任务群像。',
-//         },
-// }
