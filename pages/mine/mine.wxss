@@ -55,7 +55,7 @@
 
 .listContainer {
   padding-top: 230rpx;
-  background-color: #f3f1f1;
+  background-color: #efefef;
   min-height: 900rpx;
 }
 .listVerti {
