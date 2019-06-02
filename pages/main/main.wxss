@@ -1,43 +1,6 @@
 /* pages/main/main.wxss */
 
-/* ShufflingSection starts */
-
-.Shuffling {
-  height: 430rpx;
-  /* position: fixed; */
-}
-
-.slide-image {
-  width: 100%;
-}
-
-/* ShufflingSection ends */
-
-/* TopSection starts*/
-
-.TopSection {
-  width: 750rpx;
-  background-image: linear-gradient(to Top, #92B6D5,#92B6D5, #92B6D5);
-  box-shadow: 0 0 24rpx #bdbdbd;
-  padding: 10rpx;
-  /* position: fixed; */
-  top: 420rpx;
-  z-index: 88;
-}
-
-.TopSection_Seclect {
-  font-size: 28rpx;
-  font-weight: 500;
-  color: #fff;
-  text-align: center;
-  padding: 10rpx;
-  z-index: 88;
-  margin-left: 300rpx;
-}
-
-/* TopSection Ends */
-
-/* BookCardSection stars */
+/* BookCardSection starts */
 
 .ShadowBottom {
   box-shadow: 0 0 60rpx #bdbdbd;
@@ -50,51 +13,49 @@
 .mainCardContainer {
   background-color: #fff;
   padding: 0 20rpx 40rpx 0;
-  min-height: 600rpx;
+  min-height: 500rpx;
 }
 
 .mainCardOutline {
   display: flex;
   /* align-items: center; */
-  width:46%;
-  height:170rpx;
+  width: 98%;
+  height:210rpx;
   border-radius: 10rpx;
   background-color: rgb(248, 253, 255);
   border: 0.3rpx solid rgb(220, 238, 243);
-  float: left;
-  margin-left:17rpx;
-  margin-right: 2rpx;
-  margin-top:20rpx;
+  /* float: left; */
+  margin-left:8rpx;
+  /* margin-right: 2rpx; */
+  margin-top:30rpx;
   position: relative;
 }
 
 .mainCardImg {
   width: 130rpx;
-  height: 150rpx;
-  margin-left: 20rpx;
-  margin-top: 10rpx; 
+  height: 150rpx; 
+  margin: 27rpx 20rpx 0 20rpx;
 }
 
 .mainCardH1 {
-  font-size: 27rpx;
+  font-size: 32rpx;
   font-weight: 600;
   line-height: 1;
-  padding: 23rpx 0 7rpx 10rpx;
+  padding: 42rpx 0 7rpx 10rpx;
   color: rgb(42, 81, 116);
-  overflow: hidden; 
+  /* overflow: hidden; 
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: nowrap; */
 }
 
 .mainCardSubH1 {
   font-size: 20rpx;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
-  color: #5a5a5a;
-  padding: 5rpx 0 3rpx 10rpx;
-  overflow: hidden; 
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: #383838;
+  padding: 18rpx 10rpx 0 15rpx;
+  width: 500rpx;
+  /* overflow: hidden; */
 }
 
 .mainCardSubH2 {
@@ -102,16 +63,30 @@
   font-weight: 500;
   line-height: 1;
   color: rgb(112, 149, 180);
-  padding: 0 4rpx 0 4rpx;
+  padding: 0 4rpx 0 10rpx;
 }
 
-.mainCardH2 {
-  font-size: 32rpx;
-  font-weight: 500;
-  line-height: 1;
-  padding: 15rpx 10rpx 0 69rpx;
-  color: rgb(112, 149, 180);
-  /* display: flex; */
+.leftBox {
+  float: left;
+  width: 240rpx;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rightBox {
+  margin-left: 250rpx;
 }
 
 /* BookSection ends */
+
+
+/* new section */
+.scroll {
+  padding-top: 23rpx;
+  min-height: 1000rpx;
+}
+.topSelection {
+  padding-bottom: 5rpx;
+  margin: 0;
+}

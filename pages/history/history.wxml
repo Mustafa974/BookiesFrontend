@@ -1,27 +1,22 @@
 <!--pages/history/history.wxml-->
 <import src="../../template/order/order.wxml" />
 
-<!-- Book Section -->
+<!-- Application Section -->
 <scroll-view class="scroll" scroll-y="true">
   <van-tabs color="#92B6D5" type="card" v-model="active" custom-class='topSelection'>
-    <van-tab title="全部订单">
+    <van-tab title="入队申请">
       <!-- for each order in ordersInfo -->
       <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
-        <template is="order" data="{{orderItem}}" />
-      </view>
-    </van-tab>
-    <van-tab title="待支付">
-      <view wx:for="{{orderList0}}" wx:for-item="orderItem" class='forClass'>
         <template is="order0" data="{{orderItem}}" />
       </view>
     </van-tab>
-    <van-tab title="已支付">
-      <view wx:for="{{orderList1}}" wx:for-item="orderItem" class='forClass'>
+    <van-tab title="发帖申请">
+      <view wx:for="{{orderList0}}" wx:for-item="orderItem" class='forClass'>
         <template is="order1" data="{{orderItem}}" />
       </view>
     </van-tab>
-    <van-tab title="确认收货">
-      <view wx:for="{{orderList2}}" wx:for-item="orderItem" class='forClass'>
+    <van-tab title="上传申请">
+      <view wx:for="{{orderList1}}" wx:for-item="orderItem" class='forClass'>
         <template is="order2" data="{{orderItem}}" />
       </view>
     </van-tab>

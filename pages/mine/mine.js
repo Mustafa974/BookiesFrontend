@@ -16,30 +16,18 @@ Page({
       userInfo: app.globalData.userInfo
     })
     console.log("用户信息：", that.data.userInfo, app.globalData.avatarUrl)
-    // if (app.globalData.loginStatus) {
-    //   that.setData({
-    //     userInfo: app.globalData.userInfo
-    //   })
-    //   console.log("用户信息：", that.data.userInfo, app.globalData.avatarUrl)
-    // }
   },
 
-  // page functions
-  changeUserInfo: function() {
-    wx.navigateTo({
-      url: '../editInfo/editInfo',
-    })
-  },
-
-  onClickCart: function() {
-    wx.switchTab({
-      url: '../cart/cart',
-    })
-  },
-
-  onClickHistory: function () {
+  onClickHistory:function(){
     wx.switchTab({
       url: '../history/history',
+    })
+  },
+
+  //edit user info
+  changeUserInfo:function() {
+    wx.navigateTo({
+      url: '../editInfo/editInfo'
     })
   }
 
