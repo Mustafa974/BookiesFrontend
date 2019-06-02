@@ -38,13 +38,13 @@ Page({
         // 如果已经授权
         if (res.authSetting['scope.userInfo']) {
           app.globalData.authorization = true
-          console.log("是否授权：", app.globalData.authorization)
+          // console.log("是否授权：", app.globalData.authorization)
           // 获取用户openId
           wx.login({
             success: res => {
               console.log(res)
-             wx.request({
-                url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd97816c8c7bb217a&secret=affbc513fb90eae7380f64caf9b813f6&js_code=' + res.code + '&grant_type=authorization_code',
+              wx.request({
+                url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxffea6242979693fc&secret=7996c703934f284aefe101d0d5d06737&js_code=' + res.code + '&grant_type=authorization_code',
                 success: res => {
                   console.log("请求结果", res)
                   if (res.data.openid) {
@@ -61,7 +61,7 @@ Page({
                     console.log("No authorization")
                   }
                 }
-              }) 
+              })
             }
           })
         }
@@ -74,66 +74,59 @@ Page({
   // get user info
   GetUserInfo:function(e){
     var that = this
-    app.globalData.loginStatus = true
-    // 进入页面
-    setTimeout(function () {
-      wx.switchTab({
-        url: '../../pages/main/main',
-      })
-    }, 1400);
-    // wx.request({
-    //   url: 'http://101.132.69.33:8080/user/get?wxId=' + app.globalData.openId,
-    //   success: res => {
-    //     if (res.statusCode == 200) {
-    //       console.log("查询-用户：", res)
-    //       // 如果用户已经完成注册，设置已登陆标识
-    //       if (res.data) {
-    //         app.globalData.loginStatus = true
-    //         that.setData({
-    //           loginStatus: app.globalData.loginStatus
-    //         })
-    //         // 获取注册信息
-    //         app.globalData.userInfo.name = res.data.name
-    //         app.globalData.userInfo.phone = res.data.phone
-    //         var birth = res.data.birthday
-    //         birth = birth.substring(0, 10)
-    //         // console.log(birth)
-    //         app.globalData.userInfo.birthday = birth
-    //         var tmp_prov, new_prov
-    //         tmp_prov = res.data.province + ',' + res.data.city + ',' + res.data.district
-    //         new_prov = tmp_prov.split(",")
-    //         app.globalData.userInfo.province = new_prov
-    //         app.globalData.userInfo.address = res.data.address
-    //         console.log("注册状态：", that.data.loginStatus)
-    //         console.log("用户信息：", app.globalData.userInfo)
-    //         wx.getUserInfo({
-    //           success(res) {
-    //             console.log("获取用户头像信息")
-    //             // 储存用户头像
-    //             app.globalData.avatarUrl = res.userInfo.avatarUrl
-    //           }
-    //         })
-    //         // 自动跳转页面
-    //         wx.switchTab({
-    //           url: '../../pages/main/main',
-    //         })
-    //         console.log("自动进入")
-    //       } else {
-    //         console.log("No loginStatus")
-    //         wx.getUserInfo({
-    //           success(res) {
-    //             console.log("获取信息：", res.userInfo)
-    //             // 储存用户头像
-    //             app.globalData.avatarUrl = res.userInfo.avatarUrl
-    //           }
-    //         })
-    //       }
-    //     }
-    //     else {
-    //       console.log("获取用户信息请求失败！错误状态码：" + res.statusCode)
-    //     }
-    //   }
-    // })
+    wx.request({
+      url: 'http://101.132.69.33:8080/user/get?wxId=' + app.globalData.openId,
+      success: res => {
+        if (res.statusCode == 200) {
+          console.log("查询-用户：", res)
+          // 如果用户已经完成注册，设置已登陆标识
+          if (res.data) {
+            app.globalData.loginStatus = true
+            that.setData({
+              loginStatus: app.globalData.loginStatus
+            })
+            // 获取注册信息
+            app.globalData.userInfo.name = res.data.name
+            app.globalData.userInfo.phone = res.data.phone
+            var birth = res.data.birthday
+            birth = birth.substring(0, 10)
+            // console.log(birth)
+            app.globalData.userInfo.birthday = birth
+            var tmp_prov, new_prov
+            tmp_prov = res.data.province + ',' + res.data.city + ',' + res.data.district
+            new_prov = tmp_prov.split(",")
+            app.globalData.userInfo.province = new_prov
+            app.globalData.userInfo.address = res.data.address
+            console.log("注册状态：", that.data.loginStatus)
+            console.log("用户信息：", app.globalData.userInfo)
+            wx.getUserInfo({
+              success(res) {
+                console.log("获取用户头像信息")
+                // 储存用户头像
+                app.globalData.avatarUrl = res.userInfo.avatarUrl
+              }
+            })
+            // 自动跳转页面
+            wx.switchTab({
+              url: '../../pages/main/main',
+            })
+            console.log("自动进入")
+          } else {
+            console.log("No loginStatus")
+            wx.getUserInfo({
+              success(res) {
+                console.log("获取信息：", res.userInfo)
+                // 储存用户头像
+                app.globalData.avatarUrl = res.userInfo.avatarUrl
+              }
+            })
+          }
+        }
+        else {
+          console.log("获取用户信息请求失败！错误状态码：" + res.statusCode)
+        }
+      }
+    })
   },
 
   // SignUp
@@ -210,7 +203,6 @@ Page({
       url: '../login/login',
     })
   },
-
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮

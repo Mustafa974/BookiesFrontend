@@ -25,47 +25,35 @@
       <!-- <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" /> -->
     </view>
     <view class='listVerti'>
-      <image class='mineImg' src='/assets/icons/gender.png' style='height:47rpx'></image>
-      <text class='mineTitle'>性别</text>
-      <text class='mineData'>{{ userInfo.gender }}</text>
-      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
-    </view>
-    <view class='listVerti'>
-      <image class='mineImg' src='/assets/icons/age.png' style='height:47rpx'></image>
-      <text class='mineTitle'>年龄</text>
-      <text class='mineData'>{{ userInfo.age }}</text>
-      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
-    </view>
-    <view class='listVerti'>
       <image class='mineImg' src='/assets/icons/phone.png' style='height:47rpx'></image>
       <text class='mineTitle'>电话</text>
       <text class='mineData'>{{ userInfo.phone }}</text>
       <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
     </view>
     <view class='listVerti'>
-      <image class='mineImg' src='/assets/icons/email.png' style='height:45rpx'></image>
-      <text class='mineTitle'>邮箱</text>
-      <text class='mineData'>{{ userInfo.email }}</text>
+      <image class='mineImg' src='/assets/icons/birthday.png' style='height:45rpx'></image>
+      <text class='mineTitle'>生日</text>
+      <text class='mineData'>{{ userInfo.birthday }}</text>
       <!-- <van-cell title="生日" size="large" title-class="mineList" value="{{ userInfo.birthday }}" /> -->
     </view>
     <view class='listVerti'>
-      <image class='mineImg' src='/assets/icons/des.png' style='height:47rpx'></image>
-      <text class='mineTitle'>简介</text>
-      <text class='mineData'>{{ userInfo.selfInfo }}</text>
-      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
+      <image class='mineImg' src='/assets/icons/location.png' style='height:44rpx'></image>
+      <text class='mineTitle'>省市</text>
+      <text class='mineData'>{{ userInfo.province }}</text>
+      <!-- <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' /> -->
     </view>
     <view class='listVerti'>
-      <image class='mineImg' src='/assets/icons/id.png' style='height:47rpx'></image>
-      <text class='mineTitle'>身份</text>
-      <text class='mineData'>{{ userInfo.type }}</text>
-      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
+      <image class='mineImg' src='/assets/icons/location.png' style='height:44rpx'></image>
+      <text class='mineTitle'>地址</text>
+      <text class='mineData'>{{ userInfo.address }}</text>
+      <!-- <van-cell title="地区" size="large" title-class="mineList" value="{{ userInfo.province }}" style='width:560rpx' /> -->
     </view>
   </wux-cell-group>
   <!-- Functions -->
   <wux-cell-group>
     <view class='listMid'>
-      <!-- <!-- <van-cell title="查看购物车" size="large" title-class="mineList" isLink bind:click='onClickCart'/> -->
-      <van-cell title="管理申请信息" size="large" title-class="mineList" isLink bind:click='onClickHistory'/>
+      <van-cell title="查看购物车" size="large" title-class="mineList" isLink bind:click='onClickCart'/>
+      <van-cell title="查看历史订单" size="large" title-class="mineList" isLink bind:click='onClickHistory'/>
       <van-cell title="修改个人信息" size="large" title-class="mineList" isLink bind:click='changeUserInfo' />
     </view>
   </wux-cell-group>
