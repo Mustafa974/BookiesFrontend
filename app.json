@@ -1,19 +1,16 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/index/index",
     "pages/main/main",
-    "pages/mainCard/mainCard",
-    "pages/mine/mine",
+    "pages/index/index",
     "pages/editInfo/editInfo",
-    "pages/cart/cart",
     "pages/history/history",
-    "pages/orderDetail/orderDetail"
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#92B6D5",
-    "navigationBarTitleText": "Bookies",
+    "navigationBarTitleText": "DreamW",
     "navigationBarTextStyle": "white",
     "backgroundColorTop": "#efefef",
     "backgroundColorBottom": "#efefef",
@@ -30,6 +27,7 @@
     "van-cell": "dist/cell/index",
     "van-cell-group": "dist/cell-group/index",
     "van-field": "dist/field/index",
+    "van-field2": "dist/field2/index",
     "van-datetime-picker": "dist/datetime-picker/index",
     "van-tabs": "dist/tabs/index",
     "van-tab": "dist/tab/index",
@@ -59,19 +57,13 @@
         "selectedIconPath": "assets/icons/home.png",
         "iconPath": "assets/icons/home_light.png",
         "pagePath": "pages/main/main",
-        "text": "书城"
-      },
-      {
-        "selectedIconPath": "assets/icons/cart.png",
-        "iconPath": "assets/icons/cart_light.png",
-        "pagePath": "pages/cart/cart",
-        "text": "购物车"
+        "text": "团队"
       },
       {
         "selectedIconPath": "assets/icons/history.png",
         "iconPath": "assets/icons/history_light.png",
         "pagePath": "pages/history/history",
-        "text": "历史订单"
+        "text": "管理"
       },
       {
         "selectedIconPath": "assets/icons/me.png",

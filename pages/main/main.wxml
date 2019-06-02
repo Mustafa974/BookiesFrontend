@@ -15,62 +15,57 @@
 <template name="mainCard">
   <view class="mainCardOutline" id="mainCard" data-bookid="{{i.id}}" catchtap='toBookPage'>
     <van-col span="7">
-      <image src="{{i.coverUrl}}" class="mainCardImg"></image>
+      <image src="{{i.picUrl}}" class="mainCardImg"></image>
     </van-col>
-    <van-col span="17">
+    <van-col span="80">
       <van-row custom-class="mainCardH1">
         <text>{{ i.name }}</text>
       </van-row>
       <van-row custom-class="mainCardSubH1">
-        <text text-align="right">{{ i.author }}</text>
+        <view class='leftBox'>
+          <text text-align="right">项目负责人:</text>
+          <text text-align="right" class='mainCardSubH2'>{{ i.leaderName }}</text>
+        </view>
+        <view class='rightBox'>
+          <text text-align="right">成员数量:</text>
+          <text text-align="right" class='mainCardSubH2'>{{ i.memberNum }}</text>
+          <text text-align="right">人</text>
+        </view>
       </van-row>
       <van-row custom-class="mainCardSubH1">
-        <text text-align="right">月销量:</text>
-        <text text-align="right" class='mainCardSubH2'>{{ i.sales }}</text>
-        <text text-align="right">件</text>
-      </van-row>
-      <van-row custom-class="mainCardH2">
-        <text>￥</text>
-        <text>{{ filters.toFix(i.price*i.discount) }}</text>
+        <view class='leftBox'>
+          <text text-align="right">所在地:</text>
+          <text text-align="right" class='mainCardSubH2'>{{ i.province+i.location }}</text>
+        </view>
+        <view class='rightBox'>
+          <text text-align="right">学校:</text>
+          <text text-align="right" class='mainCardSubH2'>{{ i.school }}</text>
+        </view>
       </van-row>
     </van-col>
   </view>
 </template>
 
-<!-- Shuffling Section -->
- <swiper class='Shuffling' indicator-dots="{{shufflings.indicatorDots}}" autoplay="{{shufflings.autoplay}}" interval="{{shufflings.interval}}" duration="{{shufflings.duration}}" circular="true">
-  <block wx:for="{{shufflings.imgs}}">  
-    <swiper-item>  
-      <navigator url="{{item.link}}" hover-class="navigator-hover">  
-        <image src="{{item.url}}" class="slide-image" mode='widthFix'/>  
-      </navigator>  
-    </swiper-item>  
-  </block>  
-</swiper>
-
-<!-- TopSection of bookes -->
-<view class="TopSection">
-  <van-row>
-    <van-col custom-class="TopSection_Seclect">
-      <van-row>
-        <text bindtap='onClick'>{{selectOrder}} </text>
-      </van-row>
-    </van-col>
-  </van-row>
-</view>
-
 <!-- Select Section -->
-<van-popup show="{{ show }}" bind:close="onCancel" position="bottom" duration="220">
-  <van-picker show-toolbar title="请选择筛选方式" columns="{{ columns }}" item-height="50" bind:cancel="onCancel" bind:confirm="onConfirm" />
-</van-popup>
-
-<!-- Card Section -->
-<view class='ShadowBottom'></view>
-
-<view class='bg'>
-  <view class='mainCardContainer'style="width:100%;flex-direction:row-reverse;zoom:1;overflow:hidden;">
-    <block wx:for="{{ booksInfo }}" wx:for-item="i" wx:key="">
-      <template is="{{ 'mainCard' }}" data="{{ i }}" />
-    </block>
-  </view>
-</view>
+<!-- Book Section -->
+<scroll-view class="scroll" scroll-y="true">
+  <!-- <web-view src="http://jihao.guitoubing.top/333_高考即将来临之际 你是怎么解压的呢？.html"></web-view> -->
+  <!-- <web-view src="http://jihao.guitoubing.top/458_如何对待性格怪癖的孩子？.html" /> -->
+  <van-tabs color="#92B6D5" type="card" v-model="active" custom-class='topSelection'>
+    <van-tab title="我的团队">
+      <!-- for each order in ordersInfo -->
+      <view class='mainCardContainer'style="width:100%;flex-direction:row-reverse;zoom:1;overflow:hidden;">
+        <block wx:for="{{ groupInfo }}" wx:for-item="i" wx:key="">
+          <template is="{{ 'mainCard' }}" data="{{ i }}" />
+        </block>
+      </view>
+    </van-tab>
+    <van-tab title="搜索团队">
+      <view class='mainCardContainer'style="width:100%;flex-direction:row-reverse;zoom:1;overflow:hidden;">
+        <block wx:for="{{ groups }}" wx:for-item="i" wx:key="">
+          <template is="{{ 'mainCard' }}" data="{{ i }}" />
+        </block>
+      </view>
+    </van-tab>
+  </van-tabs>
+</scroll-view>
